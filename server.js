@@ -9,11 +9,10 @@ app.get("/", (req, res) => {
 
 app.get("/foo", (req, res) => {
   try {
-    throw new Error("hello world");
-    //throw {error: "hello world"};
+    throw {error: "hello world"};
   }
   catch (err) {
-    res.json({error: err.message});
+    res.status(404).json(err);
   }
 });
 
