@@ -1,6 +1,7 @@
 const express = require("express");
 const fs = require("fs");
 const {spawn} = require("child_process");
+const {v4: uuidv4} = require("uuid");
 
 const app = express();
 const tempDir = "/tmp/mips";
@@ -12,25 +13,43 @@ app.get("/", (req, res) => {
 });
 
 app.get("/spim", (req, res) => {
-  const id = 
-  const child = spawn(``"spim -f tmp/" + );
+  const id = uuidv4();
+  const file = `${tempDir}/${id}`;
 
-  fs.writeFile("/tmp/test", "Hey there!", function(err) {
+  const hello = `
+        .data
+msg:   .asciiz "Hello World"
+	.extern foobar 4
+
+        .text
+        .globl main
+main:   li $v0, 4       # syscall 4 (print_str)
+        la $a0, msg     # argument: string
+        syscall         # print the string
+        lw $t1, foobar
+        
+        jr $ra          # retrun to caller`
+  
+  fs.writeFile(file, hello, (err) => {
     if (err) {
       return console.log(err);
     }
   
-    console.log("The file was saved!");
+    //const child = spawn(`spim -f ${file}`);
+    ////process.stdin.pipe(child.stdin);
+    //let stdout = "";
+    //
+    //child.stdout.on("data", data => {
+    //  stdout += data;
+    //});
+    //
+    //child.on("exit", (code, signal) => {
+    //  res.send("done: " + stdout);
+    //});
+    
+    res.send("Ok");
+    //fs.unlink temp file
   }); 
-
-// Or
-fs.writeFileSync('/tmp/test-sync', 'Hey there!');
-  
-  process.stdin.pipe(child.stdin)
-  
-  child.stdout.on('data', (data) => {
-    console.log(`child stdout:\n${data}`);
-  });
 });
 
 const listener = app.listen(process.env.PORT, () =>
