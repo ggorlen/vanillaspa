@@ -5,6 +5,7 @@ const {v4: uuidv4} = require("uuid");
 
 const app = express();
 const tempDir = "/tmp/mips";
+fs.mkdirSync(tempDir, {recursive: true});
 
 app.use(express.static("public"));
 
@@ -32,22 +33,27 @@ main:   li $v0, 4       # syscall 4 (print_str)
   
   fs.writeFile(file, hello, (err) => {
     if (err) {
+      res.send(err);
       return console.log(err);
     }
   
-    //const child = spawn(`spim -f ${file}`);
-    ////process.stdin.pipe(child.stdin);
-    //let stdout = "";
-    //
-    //child.stdout.on("data", data => {
-    //  stdout += data;
-    //});
-    //
-    //child.on("exit", (code, signal) => {
-    //  res.send("done: " + stdout);
-    //});
+    const child = spawn(`spim -f ${file}`);
+    //const child = spawn(`ls`);
+    //process.stdin.pipe(child.stdin);
+    let stdout = "";
     
-    res.send("Ok");
+    child.stdout.on("data", data => {
+      stdout += data;
+    });
+    
+    child.on("exit", (code, signal) => {
+      res.send("done: " + stdout);
+    });
+    
+    child.on("error", (code, signal) => {
+      res.send("done: " + stdout);
+    });
+    
     //fs.unlink temp file
   }); 
 });
