@@ -1,3 +1,5 @@
+mkdir /usr/lib/spim
+
 # https://support.glitch.com/t/tutorial-how-to-install-any-package-from-apt-get-on-glitch/10954
 touch /tmp/INSTALLED_PACKAGES
 PACKAGES="spim"

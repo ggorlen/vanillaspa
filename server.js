@@ -37,7 +37,7 @@ main:   li $v0, 4       # syscall 4 (print_str)
       return console.log(err);
     }
   
-    const child = spawn(`spim -f ${file}`);
+    const child = spawn(`./spim -f ${file}`);
     //const child = spawn(`ls`);
     //process.stdin.pipe(child.stdin);
     let stdout = "";
@@ -51,7 +51,7 @@ main:   li $v0, 4       # syscall 4 (print_str)
     });
     
     child.on("error", (code, signal) => {
-      res.send("done: " + stdout);
+      res.send("fail: " + code + " " +signal);
     });
     
     //fs.unlink temp file
