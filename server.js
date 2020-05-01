@@ -3,6 +3,7 @@ const fs = require("fs");
 const {spawn} = require("child_process");
 
 const app = express();
+const tempDir = "/tmp/mips";
 
 app.use(express.static("public"));
 
@@ -11,11 +12,25 @@ app.get("/", (req, res) => {
 });
 
 app.get("/spim", (req, res) => {
-  fs.watch(filename, () => {
-    const ls = spawn('ls', ['-lh', filename])
-    ls.stdout.pipe(process.stdout)
-  })  
+  const id = 
+  const child = spawn(``"spim -f tmp/" + );
+
+  fs.writeFile("/tmp/test", "Hey there!", function(err) {
+    if (err) {
+      return console.log(err);
+    }
   
+    console.log("The file was saved!");
+  }); 
+
+// Or
+fs.writeFileSync('/tmp/test-sync', 'Hey there!');
+  
+  process.stdin.pipe(child.stdin)
+  
+  child.stdout.on('data', (data) => {
+    console.log(`child stdout:\n${data}`);
+  });
 });
 
 const listener = app.listen(process.env.PORT, () =>
