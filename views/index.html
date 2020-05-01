@@ -37,7 +37,11 @@ Module.onRuntimeInitialized = () => {
   Module.init();
   const result = Module.step(0, true);
 };
-
+WebAssembly.instantiateStreaming(fetch("https://cdn.glitch.com/25dc2310-ccc4-446e-b9dc-baeb5dab1b3d%2Fwasm.wasm?v=1588375883648"), Module)
+.then(results => {
+  // Do something with the results!
+});
+  
 </script>
 <script src="client.js"></script>
 <script type="text/javascript" src="wasm.js"></script>
