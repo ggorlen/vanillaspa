@@ -1,49 +1,65 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>spim</title>
-  </head>
+<head>
+  <title>Embedded Challenge</title>
+  <style>
+  [data-qualified-embed] {
+    position: relative;
+  }
+  [data-qualified-embed] iframe {
+    width: 100%;
+    height: 60vh;
+    border: none;
+  }
+  </style>
+</head>
 <body>
 
+<h1>Embedded Challenge</h1>
+
+<h2>p5.js Project</h2>
+<div data-qualified-embed="5ec2f97e5c19b1000ae24cd2"></div>
+
+<script src="//www.qualified.io/embed.js"></script>
 <script>
-var Module = {
-  postRun: () => { 
-    console.log("DONE") 
-  },
-  print: (text) => {
-    console.log(text)
-  },
-  printErr: (text) => {
-    console.log(text)
-  }
-};
-const data = `
-        .data
-msg:    .asciiz "Hello World"
-.extern foobar 4
+  // Note: This page will only work on these domains:
+  // localhost
+    // glitch.com
+    // glitch.me
+    // 127.0.0.1
+    // https://softer.glitch.me/
+  var manager = window.QualifiedEmbed.init({
+    // generate editors by looking through nodes
+    autoCreate: true,
 
-        .text
-        .globl main
-main:   
-        li $v0, 4       # syscall 4 (print_str)
-        la $a0, msg     # argument: string
-        syscall         # print the string
-        lw $t1, foobar
-        
-        jr $ra          # retrun to caller
+    // shared options for new editors
+    options: {
+        embedClientKey: "g39RsSfAYEkyRG8ZYjxrpT9c/XqnfQpN"
+      },
 
-`;
-Module.onRuntimeInitialized = () => { 
-  FS.writeFile("input.s", data);
-  Module.init();
-  const result = Module.step(0, true);
-};
-WebAssembly.instantiateStreaming(fetch("https://cdn.glitch.com/25dc2310-ccc4-446e-b9dc-baeb5dab1b3d%2Fwasm.wasm?v=1588375883648"))
-.then(results => {
-  console.log(results);
-});
-  
+    // challenge-specific options
+    challengeOptions: {
+        "5ec2f97e5c19b1000ae24cd2": {
+          language: "javascript"
+        }
+      },
+
+    // The following events can also be handled per-challenge
+    onLoad({ manager, editor, challengeId, data }) {
+      // Respond to challenge being loaded
+    },
+    onChange({ manager, editor, challengeId, data }) {
+      // save changes made to the solution
+    },
+    onRun({ manager, editor, challengeId, data }) {
+      console.log("challenge " + challengeId + " was run with this result:");
+      console.log(data);
+    }
+  });
+
+  // This demo uses autoCreate. If you prefer, you can set autoCreate to false, and create editors with code like this:
+  // var node = document.querySelector("[data-qualified-embed='5ec2f97e5c19b1000ae24cd2']");
+  // var editor = manager.createEditor({ node: node, challengeId: "5ec2f97e5c19b1000ae24cd2", options: { /* per-challenge options */ } });
 </script>
-<script src="client.js"></script>
-<script type="text/javascript" src="wasm.js"></script>
 </body>
 </html>
