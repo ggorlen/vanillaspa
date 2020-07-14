@@ -1,8 +1,9 @@
 /*
 suggestions:
-vim mode/soft wrap persistence or being able to set 
-throw error when editor.setFileContents fails
-get list of files in workspace
+- vim mode/soft wrap persistence or being able to set 
+- throw error when editor.setFileContents fails
+- get list of files in workspace
+- have to destroy workspace in order to go to next challenge
 */
 
 // https://www.qualified.io/embed/api-docs/
@@ -12,9 +13,12 @@ get list of files in workspace
   const getSolnBtn = document.querySelector("#get-solution");
   let nextChallengeBtnHandler;
   const challengeIds = [
-    "5c8b026ceea25f19d5f2ab55", 
-    "5c782e8465dca00007df248f", 
-    "5c8b096c4fd26000076c57da"
+    //"5c8b026ceea25f19d5f2ab55", 
+    //"5c782e8465dca00007df248f", 
+    //"5c8b096c4fd26000076c57da",
+    "5c74a4cdfa4fe30007a71e80",
+    "5c8b0930d13fa3000b0b46c8",
+    "5c8b093e21d0760008f57e55",
   ];
   let candidateCode = "";
   //let initialFiles = {"src/index.js": candidateCode || undefined}; // for PCC
