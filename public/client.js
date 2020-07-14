@@ -1,13 +1,71 @@
 (() => {
   // https://www.qualified.io/embed/api-docs/
-  
   const challengeNode = document.querySelector("#qualified-embed");
   const nextChallengeBtn = document.querySelector("button");
+  let nextChallengeBtnHandler;
   const challengeIds = [
     "5c8b026ceea25f19d5f2ab55", 
     "5c782e8465dca00007df248f", 
     "5c8b096c4fd26000076c57da"
   ];
+  const solutions = {
+    "5c8b096c4fd26000076c57da":
+`const balanced = string => {
+  let counts = string.split``
+    .reduce((a, e) => {
+      if (!(e in a)) {
+        a[e] = 0;
+      }
+       
+      a[e]++;
+      return a;
+    }, {})
+  ;
+    
+  if ("*" in counts) {
+    let wildcards = counts["*"];
+    delete counts["*"];
+    counts = Object.values(counts);
+      
+    if (!counts.length) {
+      return true;
+    }
+    
+    let maxCount = Math.max(...counts);
+      
+    for (let i = 0; i < counts.length; i++) {
+      wildcards -= maxCount - counts[i];
+      counts[i] = maxCount;
+        
+      if (wildcards < 0) {
+        return false;
+      }
+    }
+      
+    if (wildcards) {
+      while (wildcards > 0) {  
+        if (wildcards % counts.length === 0 || 
+            wildcards % maxCount === 0 && 
+            wildcards / maxCount + counts.length < 53) {
+          return true;
+        }
+         
+        maxCount++;
+        wildcards -= counts.length;
+      }
+          
+      return false;
+    }
+  }
+  else {
+    counts = Object.values(counts);
+  }
+  
+  return !counts.length || 
+         counts.every(e => e === counts[0])
+  ;`
+};
+  };
   let candidateCode = "";
   //let initialFiles = {"src/index.js": candidateCode || undefined}; // for PCC
   let initialFiles = {};
@@ -48,8 +106,12 @@
       
       if (data.result.completed) {
         nextChallengeBtn.disabled = false;
-        document.removeEventListener("click",nextChallengeBtn);
-        nextChallengeBtn.addEventListener("click", e => {
+        
+        if (nextChallengeBtnHandler) {
+          nextChallengeBtn.removeEventListener("click", nextChallengeBtnHandler);
+        }
+        
+        nextChallengeBtnHandler = e => {
           nextChallengeBtn.disabled = true;
           const nextIdx = (1 + challengeIds.indexOf(challengeId)) % challengeIds.length;
           challengeId = editorConfig.challengeId = challengeIds[nextIdx];
@@ -57,11 +119,12 @@
           manager.destroy();
           manager = window.QualifiedEmbed.init(managerConfig);
           editor = manager.createEditor(editorConfig);
-        });
+        };
+        nextChallengeBtn.addEventListener("click", nextChallengeBtnHandler);
         //editor.update({challegeId: challengeId, reload: true}) // FIXME
       }
     }
   };
-  var manager = window.QualifiedEmbed.init(managerConfig);
-  var editor = manager.createEditor(editorConfig);
+  let manager = window.QualifiedEmbed.init(managerConfig);
+  let editor = manager.createEditor(editorConfig);
 })();
