@@ -3,16 +3,11 @@
 <head>
   <title>Embedded Challenge</title>
   <link rel="stylesheet" href="style.css">
-  <style>
-  </style>
 </head>
 <body>
 
 <h1>Embedded Challenge</h1>
-
-<h2>p5.js Project</h2>
 <div data-qualified-embed="5ec2f97e5c19b1000ae24cd2"></div>
-
 <script src="https://www.qualified.io/embed/js/embed-embed.min.js"></script>
 <!--<script src="//www.qualified.io/embed.js"></script>-->
   
@@ -28,7 +23,7 @@
     // glitch.me
     // https://softer.glitch.me
     // softer.glitch.me
-  var manager = window.QualifiedEmbed.init({
+  const config = {
     // generate editors by looking through nodes
     autoCreate: true,
 
@@ -56,17 +51,22 @@
       console.log("challenge loaded");
       //editor.setFileContents({"src/index.js": "testing 1 2"});
     },
-    onChange({ manager, editor, challengeId, data }) {
+    onChange({manager, editor, challengeId, data}) {
       // save changes made to the solution
       console.log(manager,editor, data);
     },
-    onRun({ manager, editor, challengeId, data }) {
+    onRun({manager, editor, challengeId, data}) {
       console.log("challenge " + challengeId + " was run with this result:");
       console.log(data);
-
+      
+      if (data.result.complete) {
+        manager.destroy();
+        manager = window.QualifiedEmbed.init(config);
+      }
       //editor.update({challegeId: challengeId, reload: true}) // FIXME
     }
-  });
+  };
+  var manager = window.QualifiedEmbed.init(config);
 
   // This demo uses autoCreate. If you prefer, you can set autoCreate to false, and create editors with code like this:
   //var node = document.querySelector("[data-qualified-embed='5ec2f97e5c19b1000ae24cd2']");
