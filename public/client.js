@@ -1,19 +1,10 @@
 (() => {
   // https://www.qualified.io/embed/api-docs/
-  
-  // Note: This page will only work on these domains:
-  // localhost
-    // 127.0.0.1
-    // codepen.io
-    // https://codepen.io/pen/
-    // glitch.com
-    // glitch.me
-    // https://softer.glitch.me
-    // softer.glitch.me
-  
-  const challengeSeries = [];
+  const challengeIds = [];
   let candidateCode = "";
-  let initialFiles = {"src/index.js": candidateCode || undefined};
+  //let initialFiles = {"solution.js": candidateCode || undefined};
+  let initialFiles = {"solution/code.js": candidateCode || undefined};
+  // use src/index.js if PCC
   const config = {
     // generate editors by looking through nodes
     autoCreate: true,
@@ -35,9 +26,9 @@
     },
 
     // The following events can also be handled per-challenge
-    onLoaded({ manager, editor, challengeId, data }) {
+    onLoaded({manager, editor, challengeId, data}) {
       // Respond to challenge being loaded
-      console.log("challenge loaded");
+      //console.log("challenge loaded");
       //editor.setFileContents({"src/index.js": "testing 1 2"});
     },
     onChange({manager, editor, challengeId, data}) {
@@ -49,6 +40,7 @@
       console.log(data);
       
       if (data.result.completed) {
+        console.log(candidateCode)
         manager.destroy();
         manager = window.QualifiedEmbed.init(config);
       }
