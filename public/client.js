@@ -12,7 +12,7 @@ suggestions:
 (() => {
   const challengeNode = document.querySelector("#qualified-embed");
   const nextChallengeBtn = document.querySelector("#next-challenge");
-  nextChallengeBtn.disabled = true;// TODO why is this needed?
+  nextChallengeBtn.disabled = true;
   const getSolnBtn = document.querySelector("#get-solution");
   let nextChallengeBtnHandler;
   const challengeIds = [
@@ -66,8 +66,7 @@ def valid_installation(sequence, package, dependencies):
       console.log(`challenge ${challengeId} was run with this result:`);
       console.log(data);
       
-      if (data.result.completed && data.result.type === "attempt" /* "test" */) {
-        console.log("GREAT")
+      if (data.result.completed && data.type === "attempt" /* "test" */) {
         nextChallengeBtn.disabled = false;
         
         if (nextChallengeBtnHandler) {
@@ -78,7 +77,8 @@ def valid_installation(sequence, package, dependencies):
           nextChallengeBtn.disabled = true;
           const nextIdx = (1 + challengeIds.indexOf(challengeId)) % challengeIds.length;
           editorConfig.challengeId = challengeIds[nextIdx];
-          initialFiles.code = candidateCode + (presetCodeForChallenge[challengeIds[nextIdx]] || "");
+          initialFiles.code = candidateCode + 
+            (presetCodeForChallenge[challengeIds[nextIdx]] || "");
           context.manager.destroy();
           context.manager = window.QualifiedEmbed.init(managerConfig);
           context.editor = context.manager.createEditor(editorConfig);
