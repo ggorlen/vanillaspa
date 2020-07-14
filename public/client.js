@@ -40,7 +40,7 @@ def valid_installation(sequence, package, dependencies):
       //hideTabs: "instructions,runnerframe",
       theme: "dark",
       autoStart: false,
-      initialFiles: initialFiles
+      initialFiles: initialFiles,
     },
 
     // The following events can also be handled per-challenge
