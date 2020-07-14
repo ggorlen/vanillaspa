@@ -3,7 +3,8 @@
 <head>
   <title>Embedded Challenge Demo</title>
   <link rel="stylesheet" href="style.css">
-  <script src="https://www.qualified.io/embed/js/embed-embed.min.js" defer></script>
+  <!--<script src="https://www.qualified.io/embed/js/embed-embed.min.js" defer></script>-->
+  <script src="//www.qualified.io/embed.js"></script>
   <script src="client.js" defer></script>
 </head>
 <body>
@@ -19,8 +20,7 @@
   const freq = Object.values(counts);
   return !freq.length || freq.every(e => e === freq[0]);
 };</pre>
-<!--<script src="//www.qualified.io/embed.js"></script>-->
 
-<div data-qualified-embed="5c8b026ceea25f19d5f2ab55"></div>
+  <div id="qualified-embed"></div>
 </body>
 </html>
