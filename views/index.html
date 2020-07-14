@@ -9,7 +9,8 @@
 </head>
 <body>
 
-<h1>Embedded Carry-Forward</h1>
+  <h2>Embedded Carry-Forward Demo</h2>
+  <div id="qualified-embed"></div>
 
 <pre>const balanced = string => {
   const counts = [...string].reduce((a, e) => {
@@ -20,7 +21,5 @@
   const freq = Object.values(counts);
   return !freq.length || freq.every(e => e === freq[0]);
 };</pre>
-
-  <div id="qualified-embed"></div>
 </body>
 </html>

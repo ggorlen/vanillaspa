@@ -46,7 +46,8 @@
       console.log(data);
       
       if (data.result.completed) {
-        editorConfig.challengeId = challengeIds.indexOf(challengeId) % challengeIds.length;
+        const nextIdx = (1 + challengeIds.indexOf(challengeId)) % challengeIds.length;
+        editorConfig.challengeId = challengeIds[nextIdx];
         initialFiles.code = candidateCode;//data.files.code;
         manager.destroy();
         manager = window.QualifiedEmbed.init(managerConfig);
