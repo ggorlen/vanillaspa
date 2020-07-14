@@ -2,14 +2,18 @@
   // https://www.qualified.io/embed/api-docs/
   
   const challengeNode = document.querySelector("#qualified-embed");
-  const challengeIds = [];
-  const challengeId = "5c8b026ceea25f19d5f2ab55";
+  const challengeIds = [
+    "5c8b026ceea25f19d5f2ab55", 
+    "5c782e8465dca00007df248f", 
+    "5c8b096c4fd26000076c57da"
+  ];
   let candidateCode = "";
-  //let initialFiles = {"src/index.js": candidateCode || undefined}; // FIXME
-  let initialFiles = {"code": 'asdfa'|| undefined}; // FIXME
+  //let initialFiles = {"src/index.js": candidateCode || undefined}; // for PCC
+  let initialFiles = {};
   const editorConfig = {
     node: challengeNode, 
-    challengeId: challengeId, options: {}
+    challengeId: challengeIds[0],
+    options: {}
   };
   // use src/index.js if PCC
   
@@ -19,18 +23,12 @@
 
     // shared options for new editors
     options: {
-      embedClientKey: "g39RsSfAYEkyRG8ZYjxrpT9c/XqnfQpN"
-    },
-
-    // challenge-specific options
-    challengeOptions: {
-      [challengeId]: {
-        language: "javascript",
-        //hideTabs: "instructions,runnerframe",
-        theme: "dark",
-        autoStart: false,
-        initialFiles: initialFiles
-      }
+      embedClientKey: "g39RsSfAYEkyRG8ZYjxrpT9c/XqnfQpN",
+      language: "javascript",
+      //hideTabs: "instructions,runnerframe",
+      theme: "dark",
+      autoStart: false,
+      initialFiles: initialFiles
     },
 
     // The following events can also be handled per-challenge
@@ -48,6 +46,8 @@
       console.log(data);
       
       if (data.result.completed) {
+        editorConfig.challengeId = challengeIds.indexOf(challengeId) % challengeIds.length;
+        initialFiles.code = candidateCode;//data.files.code;
         manager.destroy();
         manager = window.QualifiedEmbed.init(managerConfig);
         editor = manager.createEditor(editorConfig);
