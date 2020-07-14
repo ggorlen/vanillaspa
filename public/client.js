@@ -1,11 +1,16 @@
 (() => {
   // https://www.qualified.io/embed/api-docs/
   
-  const challengeNode = document.querySelector("#qualified-challenge");
+  const challengeNode = document.querySelector("#qualified-embed");
   const challengeIds = [];
-  const challengeId = "5ec2f97e5c19b1000ae24cd2";
+  const challengeId = "5c8b026ceea25f19d5f2ab55";
   let candidateCode = "";
-  let initialFiles = {"solution.js": candidateCode || undefined}; // FIXME
+  //let initialFiles = {"src/index.js": candidateCode || undefined}; // FIXME
+  let initialFiles = {"code": 'asdfa'|| undefined}; // FIXME
+  const editorConfig = {
+    node: challengeNode, 
+    challengeId: challengeId, options: {}
+  };
   // use src/index.js if PCC
   
   const managerConfig = {
@@ -45,14 +50,11 @@
       if (data.result.completed) {
         manager.destroy();
         manager = window.QualifiedEmbed.init(managerConfig);
+        editor = manager.createEditor(editorConfig);
+        //editor.update({challegeId: challengeId, reload: true}) // FIXME
       }
-      //editor.update({challegeId: challengeId, reload: true}) // FIXME
     }
   };
-  const manager = window.QualifiedEmbed.init(managerConfig);
-  const editorConfig = {
-    node: challengeNode, 
-    challengeId: challengeId, options: {}
-  };
-  const editor = manager.createEditor(editorConfig);
+  let manager = window.QualifiedEmbed.init(managerConfig);
+  let editor = manager.createEditor(editorConfig);
 })();
