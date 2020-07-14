@@ -1,13 +1,12 @@
 /*
 suggestions:
-vim mode
-throw errors when editor.setFileContents fails
+vim mode/soft wrap persistence or being able to set 
+throw error when editor.setFileContents fails
 get list of files in workspace
-
 */
 
+// https://www.qualified.io/embed/api-docs/
 (() => {
-  // https://www.qualified.io/embed/api-docs/
   const challengeNode = document.querySelector("#qualified-embed");
   const nextChallengeBtn = document.querySelector("#next-challenge");
   let nextChallengeBtnHandler;
@@ -75,12 +74,12 @@ get list of files in workspace
   };
   solutions["5c8b026ceea25f19d5f2ab55"] = 
     solutions["5c782e8465dca00007df248f"] = `const balanced = string => {
-const counts = [...string].reduce((a, e) => {
-a[e] = ++a[e] || 1;
-return a;
-}, {});
-const freq = Object.values(counts);
-return !freq.length || freq.every(e => e === freq[0]);
+  const counts = [...string].reduce((a, e) => {
+    a[e] = ++a[e] || 1;
+    return a;
+  }, {});
+  const freq = Object.values(counts);
+  return !freq.length || freq.every(e => e === freq[0]);
 };`
   let candidateCode = "";
   //let initialFiles = {"src/index.js": candidateCode || undefined}; // for PCC
@@ -90,7 +89,6 @@ return !freq.length || freq.every(e => e === freq[0]);
     challengeId: challengeIds[0],
     options: {}
   };
-  // use src/index.js if PCC
   
   const managerConfig = {
     // generate editors by looking through nodes
@@ -135,22 +133,23 @@ return !freq.length || freq.every(e => e === freq[0]);
           manager.destroy();
           manager = window.QualifiedEmbed.init(managerConfig);
           editor = manager.createEditor(editorConfig);
+          document.querySelector("#get-solution").removeEventListener("click", getSolnHandler);
+          document.querySelector("#get-solution").addEventListener("click", getSolnHandler);
         };
         nextChallengeBtn.addEventListener("click", nextChallengeBtnHandler);
         //editor.update({challegeId: challengeId, reload: true}) // FIXME
       }
     }
   };
-  let manager = window.QualifiedEmbed.init(managerConfig);
+  
+  let manager = 
   let editor = manager.createEditor(editorConfig);
-  document.querySelector("#get-solution").addEventListener("click", e => {
-    console.log("HI")
-    editor.setFileContents({"code": "testing 1 2"});
-    //const ta = document.createElement("textarea");
-    //ta.innerText = editorConfig.challengeId;
-    //document.body.appendChild(ta);
-    //ta.select();
-    //document.execCommand("copy");
-    //document.body.removeChild(ta);
-  });
+  const getSolnHandler = e =>
+    editor.setFileContents({"code": solutions[editorConfig.challengeId]})
+  ;
+  document.querySelector("#get-solution").addEventListener("click", getSolnHandler);
+  const context = {
+    manager: window.QualifiedEmbed.init(managerConfig);
+    editor: window.QualifiedEmbed.init(managerConfig);
+  };
 })();
