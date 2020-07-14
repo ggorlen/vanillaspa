@@ -41,6 +41,7 @@ def valid_installation(sequence, package, dependencies):
       theme: "dark",
       autoStart: false,
       initialFiles: initialFiles,
+      initialLayout: {topRight: ["instructions"]},
     },
 
     // The following events can also be handled per-challenge
