@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Embedded Challenge</title>
+  <title>Embedded Challenge Demo</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>Embedded Challenge</h1>
-<div data-qualified-embed="5ec2f97e5c19b1000ae24cd2"></div>
+<h1>Embedded Carry-Forward</h1>
 <script src="https://www.qualified.io/embed/js/embed-embed.min.js"></script>
 <!--<script src="//www.qualified.io/embed.js"></script>-->
+  
+<div data-qualified-embed="5c8b026ceea25f19d5f2ab55"></div>
   
 <script>
   // https://www.qualified.io/embed/api-docs/
@@ -23,6 +24,10 @@
     // glitch.me
     // https://softer.glitch.me
     // softer.glitch.me
+  
+  const challengeSeries = [];
+  let candidateCode = "";
+  let initialFiles = {"src/index.js": candidateCode || undefined};
   const config = {
     // generate editors by looking through nodes
     autoCreate: true,
@@ -34,14 +39,12 @@
 
     // challenge-specific options
     challengeOptions: {
-      "5ec2f97e5c19b1000ae24cd2": {
+      "5c8b026ceea25f19d5f2ab55": {
         language: "javascript",
         //hideTabs: "instructions,runnerframe",
         theme: "dark",
         autoStart: false,
-        initialFiles: {
-         // "src/index.js": "testing",
-        },
+        initialFiles: initialFiles
       }
     },
 
@@ -53,13 +56,13 @@
     },
     onChange({manager, editor, challengeId, data}) {
       // save changes made to the solution
-      console.log(manager,editor, data);
+      candidateCode = data.files.code;
     },
     onRun({manager, editor, challengeId, data}) {
       console.log("challenge " + challengeId + " was run with this result:");
       console.log(data);
       
-      if (data.result.complete) {
+      if (data.result.completed) {
         manager.destroy();
         manager = window.QualifiedEmbed.init(config);
       }
