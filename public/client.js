@@ -26,7 +26,7 @@ def valid_installation(sequence, package, dependencies):
   const editorConfig = {
     node: challengeNode, 
     challengeId: challengeIds[0],
-    options: {}
+    options: {},
   };
   
   const managerConfig = {
