@@ -1,15 +1,3 @@
-// TODO only success when submission tests are passed, not candidate tests
-
-/*
-suggestions:
-- vim mode/soft wrap persistence or being able to set 
-- throw error when editor.setFileContents fails
-- get list of files in workspace
-- have to destroy workspace in order to go to next challenge
-- is it possible to programmatically force a submission?
-*/
-
-// https://www.qualified.io/embed/api-docs/
 (() => {
   const challengeNode = document.querySelector("#qualified-embed");
   const nextChallengeBtn = document.querySelector("#next-challenge");
