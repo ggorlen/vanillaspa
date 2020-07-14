@@ -10,19 +10,7 @@
 <body>
   <h2>Embedded Carry-Forward Demo</h2>
   <div id="qualified-embed"></div>
-  <button disabled>next challenge</button>
-  <button disabled>next challenge</button>
-  <button disabled>next challenge</button>
-    Solution to the first two challenges:
-<pre>const balanced = string =&gt; {
-  const counts = [...string].reduce((a, e) =&gt; {
-    a[e] = ++a[e] || 1;
-    return a;
-  }, {});
-  
-  const freq = Object.values(counts);
-  return !freq.length || freq.every(e =&gt; e === freq[0]);
-};</pre>
-  </div>
+  <button id="get-solution">I give up--give me the solution!</button>
+  <button disabled id="next-challenge">next challenge</button>
 </body>
 </html>

@@ -1,7 +1,15 @@
+/*
+suggestions:
+vim mode
+throw errors when editor.setFileContents fails
+get list of files in workspace
+
+*/
+
 (() => {
   // https://www.qualified.io/embed/api-docs/
   const challengeNode = document.querySelector("#qualified-embed");
-  const nextChallengeBtn = document.querySelector("button");
+  const nextChallengeBtn = document.querySelector("#next-challenge");
   let nextChallengeBtnHandler;
   const challengeIds = [
     "5c8b026ceea25f19d5f2ab55", 
@@ -9,9 +17,8 @@
     "5c8b096c4fd26000076c57da"
   ];
   const solutions = {
-    "5c8b096c4fd26000076c57da":
-`const balanced = string => {
-  let counts = string.split``
+    "5c8b096c4fd26000076c57da": `const balanced = string => {
+  let counts = string.split("")
     .reduce((a, e) => {
       if (!(e in a)) {
         a[e] = 0;
@@ -63,9 +70,18 @@
   
   return !counts.length || 
          counts.every(e => e === counts[0])
-  ;`
-};
+  ;
+};`
   };
+  solutions["5c8b026ceea25f19d5f2ab55"] = 
+    solutions["5c782e8465dca00007df248f"] = `const balanced = string => {
+const counts = [...string].reduce((a, e) => {
+a[e] = ++a[e] || 1;
+return a;
+}, {});
+const freq = Object.values(counts);
+return !freq.length || freq.every(e => e === freq[0]);
+};`
   let candidateCode = "";
   //let initialFiles = {"src/index.js": candidateCode || undefined}; // for PCC
   let initialFiles = {};
@@ -101,7 +117,7 @@
       candidateCode = data.files.code;
     },
     onRun({manager, editor, challengeId, data}) {
-      console.log("challenge " + challengeId + " was run with this result:");
+      console.log(`challenge ${challengeId} was run with this result:`);
       console.log(data);
       
       if (data.result.completed) {
@@ -114,7 +130,7 @@
         nextChallengeBtnHandler = e => {
           nextChallengeBtn.disabled = true;
           const nextIdx = (1 + challengeIds.indexOf(challengeId)) % challengeIds.length;
-          challengeId = editorConfig.challengeId = challengeIds[nextIdx];
+          editorConfig.challengeId = challengeIds[nextIdx];
           initialFiles.code = candidateCode;//data.files.code;
           manager.destroy();
           manager = window.QualifiedEmbed.init(managerConfig);
@@ -127,4 +143,14 @@
   };
   let manager = window.QualifiedEmbed.init(managerConfig);
   let editor = manager.createEditor(editorConfig);
+  document.querySelector("#get-solution").addEventListener("click", e => {
+    console.log("HI")
+    editor.setFileContents({"code": "testing 1 2"});
+    //const ta = document.createElement("textarea");
+    //ta.innerText = editorConfig.challengeId;
+    //document.body.appendChild(ta);
+    //ta.select();
+    //document.execCommand("copy");
+    //document.body.removeChild(ta);
+  });
 })();
