@@ -24,6 +24,8 @@
 <!--<script src="//www.qualified.io/embed.js"></script>-->
   
 <script>
+  // https://www.qualified.io/embed/api-docs/
+  
   // Note: This page will only work on these domains:
   // localhost
     // 127.0.0.1
@@ -49,8 +51,8 @@
         //hideTabs: "instructions,runnerframe",
         theme: "dark",
         autoStart: false,
-        initialFiles: { // FIXME
-          "src/index.js": "testing",
+        initialFiles: {
+         // "src/index.js": "testing",
         },
       }
     },
@@ -59,7 +61,7 @@
     onLoaded({ manager, editor, challengeId, data }) {
       // Respond to challenge being loaded
       console.log("challenge loaded");
-      //editor.setFileContents({"src/index.js": "testing 1 2"}); // FIXME
+      //editor.setFileContents({"src/index.js": "testing 1 2"});
     },
     onChange({ manager, editor, challengeId, data }) {
       // save changes made to the solution
