@@ -8,18 +8,20 @@
   <script src="client.js" defer></script>
 </head>
 <body>
-
   <h2>Embedded Carry-Forward Demo</h2>
   <div id="qualified-embed"></div>
-
-<pre>const balanced = string => {
-  const counts = [...string].reduce((a, e) => {
+  <button disabled>next challenge</button>
+  <div>
+    Solution:
+<pre>const balanced = string =&gt; {
+  const counts = [...string].reduce((a, e) =&gt; {
     a[e] = ++a[e] || 1;
     return a;
   }, {});
   
   const freq = Object.values(counts);
-  return !freq.length || freq.every(e => e === freq[0]);
+  return !freq.length || freq.every(e =&gt; e === freq[0]);
 };</pre>
+  </div>
 </body>
 </html>

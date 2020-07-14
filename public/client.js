@@ -2,6 +2,7 @@
   // https://www.qualified.io/embed/api-docs/
   
   const challengeNode = document.querySelector("#qualified-embed");
+  const nextChallengeBtn = document.querySelector("button");
   const challengeIds = [
     "5c8b026ceea25f19d5f2ab55", 
     "5c782e8465dca00007df248f", 
@@ -46,16 +47,21 @@
       console.log(data);
       
       if (data.result.completed) {
-        const nextIdx = (1 + challengeIds.indexOf(challengeId)) % challengeIds.length;
-        editorConfig.challengeId = challengeIds[nextIdx];
-        initialFiles.code = candidateCode;//data.files.code;
-        manager.destroy();
-        manager = window.QualifiedEmbed.init(managerConfig);
-        editor = manager.createEditor(editorConfig);
+        nextChallengeBtn.disabled = false;
+        document.removeEventListener("click",nextChallengeBtn);
+        nextChallengeBtn.addEventListener("click", e => {
+          nextChallengeBtn.disabled = true;
+          const nextIdx = (1 + challengeIds.indexOf(challengeId)) % challengeIds.length;
+          challengeId = editorConfig.challengeId = challengeIds[nextIdx];
+          initialFiles.code = candidateCode;//data.files.code;
+          manager.destroy();
+          manager = window.QualifiedEmbed.init(managerConfig);
+          editor = manager.createEditor(editorConfig);
+        });
         //editor.update({challegeId: challengeId, reload: true}) // FIXME
       }
     }
   };
-  let manager = window.QualifiedEmbed.init(managerConfig);
-  let editor = manager.createEditor(editorConfig);
+  var manager = window.QualifiedEmbed.init(managerConfig);
+  var editor = manager.createEditor(editorConfig);
 })();
