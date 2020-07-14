@@ -50,8 +50,7 @@
         theme: "dark",
         autoStart: false,
         initialFiles: { // FIXME
-          "foo.js": "testing",
-          "baz.js": "1 2 testing",
+          "src/index.js": "testing",
         },
       }
     },
@@ -60,11 +59,11 @@
     onLoaded({ manager, editor, challengeId, data }) {
       // Respond to challenge being loaded
       console.log("challenge loaded");
-
-      editor.setFileContents({"test.js": "testing 1 2"}); // FIXME
+      //editor.setFileContents({"src/index.js": "testing 1 2"}); // FIXME
     },
     onChange({ manager, editor, challengeId, data }) {
       // save changes made to the solution
+      console.log(manager,editor, data);
     },
     onRun({ manager, editor, challengeId, data }) {
       console.log("challenge " + challengeId + " was run with this result:");
