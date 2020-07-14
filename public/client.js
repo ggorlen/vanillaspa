@@ -1,3 +1,5 @@
+// TODO only success when submission tests are passed, not candidate tests
+
 /*
 suggestions:
 - vim mode/soft wrap persistence or being able to set 
@@ -10,6 +12,7 @@ suggestions:
 (() => {
   const challengeNode = document.querySelector("#qualified-embed");
   const nextChallengeBtn = document.querySelector("#next-challenge");
+  nextChallengeBtn.disabled = true;// TODO why is this needed?
   const getSolnBtn = document.querySelector("#get-solution");
   let nextChallengeBtnHandler;
   const challengeIds = [
@@ -17,9 +20,15 @@ suggestions:
     //"5c782e8465dca00007df248f", 
     //"5c8b096c4fd26000076c57da",
     "5c74a4cdfa4fe30007a71e80",
-    "5c8b0930d13fa3000b0b46c8",
     "5c8b093e21d0760008f57e55",
+    "5c8b0930d13fa3000b0b46c8",
   ];
+  const presetCodeForChallenge = {
+    "5c8b0930d13fa3000b0b46c8": `
+
+def valid_installation(sequence, package, dependencies):
+    pass`,
+  };
   let candidateCode = "";
   //let initialFiles = {"src/index.js": candidateCode || undefined}; // for PCC
   let initialFiles = {};
@@ -57,7 +66,8 @@ suggestions:
       console.log(`challenge ${challengeId} was run with this result:`);
       console.log(data);
       
-      if (data.result.completed) {
+      if (data.result.completed && data.result.type === "attempt" /* "test" */) {
+        console.log("GREAT")
         nextChallengeBtn.disabled = false;
         
         if (nextChallengeBtnHandler) {
@@ -68,7 +78,7 @@ suggestions:
           nextChallengeBtn.disabled = true;
           const nextIdx = (1 + challengeIds.indexOf(challengeId)) % challengeIds.length;
           editorConfig.challengeId = challengeIds[nextIdx];
-          initialFiles.code = candidateCode;
+          initialFiles.code = candidateCode + (presetCodeForChallenge[challengeIds[nextIdx]] || "");
           context.manager.destroy();
           context.manager = window.QualifiedEmbed.init(managerConfig);
           context.editor = context.manager.createEditor(editorConfig);
