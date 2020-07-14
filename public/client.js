@@ -6,6 +6,7 @@ suggestions:
 - throw error when editor.setFileContents fails
 - get list of files in workspace
 - have to destroy workspace in order to go to next challenge
+- is it possible to programmatically force a submission?
 */
 
 // https://www.qualified.io/embed/api-docs/
@@ -27,7 +28,9 @@ suggestions:
     "5c8b0930d13fa3000b0b46c8": `
 
 def valid_installation(sequence, package, dependencies):
-    pass`,
+    pass
+
+`,
   };
   let candidateCode = "";
   //let initialFiles = {"src/index.js": candidateCode || undefined}; // for PCC
