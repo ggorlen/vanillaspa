@@ -3,7 +3,7 @@
   const challengeIds = [];
   let candidateCode = "";
   //let initialFiles = {"solution.js": candidateCode || undefined};
-  let initialFiles = {"solution/code.js": candidateCode || undefined};
+  let initialFiles = {"test.js": "asdasdad"}//candidateCode || undefined};
   // use src/index.js if PCC
   const config = {
     // generate editors by looking through nodes
@@ -40,7 +40,6 @@
       console.log(data);
       
       if (data.result.completed) {
-        console.log(candidateCode)
         manager.destroy();
         manager = window.QualifiedEmbed.init(config);
       }
