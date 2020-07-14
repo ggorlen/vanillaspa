@@ -68,16 +68,13 @@ def valid_installation(sequence, package, dependencies):
           nextChallengeBtn.disabled = true;
           const nextIdx = (1 + challengeIds.indexOf(challengeId)) % challengeIds.length;
           editorConfig.challengeId = challengeIds[nextIdx];
+          editor.update({challengeId: challengeIds[nextIdx]});
           initialFiles.code = candidateCode + 
             (presetCodeForChallenge[challengeIds[nextIdx]] || "");
-          context.manager.destroy();
-          context.manager = window.QualifiedEmbed.init(managerConfig);
-          context.editor = context.manager.createEditor(editorConfig);
           getSolnBtn.removeEventListener("click", getSolnHandler);
           getSolnBtn.addEventListener("click", getSolnHandler);
         };
         nextChallengeBtn.addEventListener("click", nextChallengeBtnHandler);
-        //editor.update({challegeId: challengeId, reload: true}) // FIXME
       }
     }
   };
