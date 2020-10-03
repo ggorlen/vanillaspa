@@ -4,9 +4,13 @@
 
 body {
   font-family: helvetica, arial, sans-serif;
-  background: #333;
-  color: #eee;
+  background: #262626;
+  color: #ddd;
   margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #eee;
 }
 
 a,
@@ -14,15 +18,23 @@ a:link,
 a:visited,
 a:hover,
 a:active {
-  color: white;
+  color: #fff;
 }
 
 nav {
-  height: 100px;
+  background: #222;
+  padding: 0.1em;
 }
 nav > ul {
   list-style: none;
   padding: 0;
+}
+nav > ul > li {
+  display: inline;
+}
+
+header {
+  padding: 1em;
 }
 
 main {

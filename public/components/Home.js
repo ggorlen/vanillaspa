@@ -3,13 +3,22 @@ const Home = () => {
     .then(res => res.json())
     .then(data => {
       const gistsEl = document.querySelector("#gists");
-      data.forEach(e => gistsEl.e)
+      gistsEl.textContent = "";
+      const ul = document.createElement("ul");
+      gistsEl.appendChild(ul);
+      data.forEach(e => {
+        const li = document.createElement("li");
+        li.innerHTML = `<a href="${e.html_url}">${e.description || e.html_url}</a>`;
+        ul.appendChild(li);
+      });
     })
   ;
   
   return `
-    ${Header()}
-    <h1>home</h1>
+    ${Nav()}
+    <header>
+      <h1>home</h1>
+    </header>
     <main>
       <p>Recent github gists:</p>
       <div id="gists">loading...</div>

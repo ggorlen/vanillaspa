@@ -1,8 +1,6 @@
 const About = () => {
-  
-  
   return `
-    ${Header()}
+    ${Nav()}
     <h1>about</h1>
     <main>
       About stuff...

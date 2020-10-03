@@ -1,5 +1,4 @@
-const Header = () => {
-  
+const Nav = () => {
   
   return `
     <nav>
