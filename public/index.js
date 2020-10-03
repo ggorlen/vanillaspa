@@ -12,7 +12,7 @@
       chunks.pop();
     }
     
-    return back(chunks);
+    return /\./.test(back(chunks)) ? "" : back(chunks);
   };
   
   const render = (rootEl, page) => {

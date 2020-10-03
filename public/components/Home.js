@@ -4,7 +4,8 @@ const Home = () => {
     .then(data => {
       const gistsEl = document.querySelector("#gists");
     
-      if (!gistsEl) return; // TODO find a better way to abort
+      // TODO find a better way to abort if nav occurred by the time the request gets back
+      if (!gistsEl) return; 
     
       gistsEl.textContent = "";
       const ul = document.createElement("ul");

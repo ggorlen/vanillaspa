@@ -13,6 +13,6 @@ POC vanilla SPA experiment
 - https://gomakethings.com/how-to-update-the-browser-url-without-refreshing-the-page-using-the-vanilla-js-history-api/
 
 ## TODO 
+- update location parser to handle routes in the format users/username to specify resource
 - set up es6 modules
 - find a better way to abort requests after rendering
-- nested routes like /sdasdas/about causes issues -- fix express serving up wrong paths to .js files etc
