@@ -3,6 +3,9 @@ const Home = () => {
     .then(res => res.json())
     .then(data => {
       const gistsEl = document.querySelector("#gists");
+    
+      if (!gistsEl) return; // TODO find a better way to abort
+    
       gistsEl.textContent = "";
       const ul = document.createElement("ul");
       gistsEl.appendChild(ul);
