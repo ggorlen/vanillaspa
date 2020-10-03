@@ -9,6 +9,14 @@ body {
   margin: 0;
 }
 
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: white;
+}
+
 nav {
   height: 100px;
 }
