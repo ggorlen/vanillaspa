@@ -16,3 +16,4 @@ POC vanilla SPA experiment
 - update location parser to handle routes in the format users/username to specify resource
 - set up es6 modules
 - find a better way to abort requests after rendering
+- https://restfulapi.net/resource-naming/

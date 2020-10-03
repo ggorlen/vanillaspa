@@ -21,10 +21,10 @@ const Home = () => {
   return `
     ${Nav()}
     <header>
-      <h1>home</h1>
+      <h1>Home</h1>
     </header>
     <main>
-      <p>Recent github gists:</p>
+      <p>Recently published GitHub gists:</p>
       <div id="gists">loading...</div>
     </main>
   `;
