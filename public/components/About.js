@@ -1,3 +1,5 @@
+import Header from "./Header";
+
 const About = () => {
   
   
@@ -6,3 +8,5 @@ const About = () => {
     <h1>about</h1>
   `;
 };
+
+export default About;

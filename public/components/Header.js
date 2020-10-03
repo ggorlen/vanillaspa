@@ -5,3 +5,5 @@ const Header = () => {
     <div style="height: 50px; background: red;">nav</div>
   `;
 };
+
+export default Header;
