@@ -1,6 +1,5 @@
 const NotFound = () => {
   
-  
   return `
     ${Nav()}
     <header>

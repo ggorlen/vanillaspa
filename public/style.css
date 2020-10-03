@@ -4,13 +4,19 @@
 
 body {
   font-family: helvetica, arial, sans-serif;
-  background: #262626;
-  color: #ddd;
+  background: #353535;
+  color: #eee;
   margin: 0;
+}
+
+header {
+  margin-top: 1em;
 }
 
 h1, h2, h3, h4, h5, h6 {
   color: #eee;
+  margin: 0;
+  padding: 0;
 }
 
 a,
@@ -18,19 +24,29 @@ a:link,
 a:visited,
 a:hover,
 a:active {
-  color: #fff;
+  color: #bbb;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #888;
 }
 
 nav {
-  background: #222;
-  padding: 0.1em;
+  background: #131313;
+  padding: 1em;
 }
 nav > ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 nav > ul > li {
   display: inline;
+  margin-left: 0.5em;
+}
+nav > ul > li:first-child {
+  margin-left: 0;
 }
 
 header {

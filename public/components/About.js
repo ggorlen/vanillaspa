@@ -1,9 +1,12 @@
 const About = () => {
+  
   return `
     ${Nav()}
-    <h1>about</h1>
+    <header>
+      <h1>About</h1>
+    </header>
     <main>
-      About stuff...
+      Just an experiment with vanilla SPA...
     </main>
   `;
 };

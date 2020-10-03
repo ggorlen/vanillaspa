@@ -3,8 +3,9 @@ const Nav = () => {
   return `
     <nav>
       <ul>
-        <li><a href="home" class="navigable" data-nav="">Home</a></li>
-        <li><a href="about" class="navigable" data-nav="about">About</a></li>
+        <li>Vanilla SPA experiment</li>
+        <li><a href="" class="navigable">Home</a></li>
+        <li><a href="about" class="navigable">About</a></li>
       </ul>
     </nav>
   `;
