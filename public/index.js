@@ -1,4 +1,5 @@
 (() => {
+  const back = a => a[a.length-1];
   const appEl = document.querySelector("#app");
   
   const routes = {
@@ -6,30 +7,21 @@
     "about": About,
   };
   
-  const pushHandler = event => {
-    let id = event.target.id;
-    window.history.pushState({id}, `${id}`, `/${id}`);
-  };
-  
   const navigate = page => {
-    appEl.innerHTML = routes[page] ? routes[page]() : "Page not found";
+    appEl.innerHTML = routes[page] ? routes[page]() : NotFound();
     [...document.querySelectorAll(".navigable")].forEach(el => 
-      //el.removEventListener("click", e => {
       el.addEventListener("click", e => {
-        console.log("navigation")
+        e.preventDefault();
+        const dest = e.target.dataset.nav;
+        window.history.pushState({dest}, `${dest}`, `/${dest}`);
+        navigate(dest);
       })
     );
   };
 
-  window.addEventListener("popstate", event => {
-    let stateId = event.state.id;
-   // load_content(id);
+  window.addEventListener("popstate", e => {
+    navigate(back(window.location.href.split("/")));
   });
   
-  const path = window.location.href.split("/");
-  const page = path[path.length-1];
-  navigate(page);
-  console.log(window.location.href)
-  console.log(path)
-  // window["contact"].addEventListener("click", event => push(event))
+  navigate(back(window.location.href.split("/")));
 })();
