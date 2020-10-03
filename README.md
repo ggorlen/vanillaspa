@@ -14,3 +14,5 @@ POC vanilla SPA experiment
 
 ## TODO 
 - set up es6 modules
+- find a better way to abort requests after rendering
+- nested routes like /sdasdas/about causes issues -- fix express serving up wrong paths to .js files etc

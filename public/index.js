@@ -5,6 +5,16 @@
     "about": About,
   };
   
+  const parseLocation = () => {
+    const chunks = window.location.href.split("/");
+    
+    while (chunks.length && !back(chunks)) {
+      chunks.pop();
+    }
+    
+    return back(chunks);
+  };
+  
   const render = (rootEl, page) => {
     rootEl.innerHTML = routes[page] ? routes[page]() : NotFound();
     [...document.querySelectorAll(".navigable")].forEach(el => 
@@ -19,8 +29,8 @@
 
   const appEl = document.querySelector("#app");
   window.addEventListener("popstate", e => {
-    render(appEl, back(window.location.href.split("/")));
+    render(appEl, parseLocation());
   });
   
-  render(appEl, back(window.location.href.split("/")));
+  render(appEl, parseLocation());
 })();
