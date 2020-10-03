@@ -10,3 +10,7 @@ POC vanilla SPA experiment
 - https://medium.com/better-programming/js-vanilla-script-spa-1b29b43ea475
 - https://github.com/ewan-m/vanilla-js-spa/blob/master/routing/router.js
 - https://glitch.com/edit/#!/vanilla-spa?path=script.js%3A3%3A16
+- https://gomakethings.com/how-to-update-the-browser-url-without-refreshing-the-page-using-the-vanilla-js-history-api/
+
+## TODO 
+- set up es6 modules

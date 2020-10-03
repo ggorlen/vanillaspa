@@ -4,23 +4,19 @@
 
 body {
   font-family: helvetica, arial, sans-serif;
-  margin: 1em;
-  background: #111;
+  background: #333;
   color: #eee;
+  margin: 0;
 }
 
-p {
-  max-width: 500px;
+nav {
+  height: 100px;
+}
+nav > ul {
+  list-style: none;
+  padding: 0;
 }
 
-#qualified-embed {
-  position: relative;
-  height: 60vh;
-  width: 100%;
-}
-
-#qualified-embed iframe {
-  width: 100%;
-  height: 60vh;
-  border: none;
+main {
+  padding: 1em;
 }
