@@ -2,14 +2,13 @@
   const routes = {
     "/": Home,
     "/about": About,
-    "/posts": Posts, // TODO add /posts/:username
+    "/posts": Posts, // TODO add /posts/:username or resource paths
   };
   
   const renderRoute = path => {
     const chunks = [...path.matchAll(/\/[^\/]*/g)]; // TODO see above
-    const resId = chunks[1];
-    const page = chunks[0];
-    return routes[page] ? routes[page](resId) : NotFound();
+    const [page, resId] = chunks.map(e => e[0]);
+    return routes[page] ? routes[page]((resId || "").slice(1)) : NotFound();
   };
   
   const render = (rootEl, path) => {
