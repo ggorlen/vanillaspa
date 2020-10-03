@@ -3,6 +3,7 @@
 POC vanilla SPA experiment
 
 ### Resources
+- https://glitch.com/edit/#!/vanilla-spa?path=script.js%3A24%3A12
 - https://github.com/rishavs/vanillajs-spa
 - https://javascript.christmas/2019/12
 - https://dev.to/rishavs/making-a-single-page-app-in-ye-good-olde-js-es6-3eng
