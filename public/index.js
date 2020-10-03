@@ -2,19 +2,14 @@
   const routes = {
     "/": Home,
     "/about": About,
-    "/posts/:username": Posts, // TODO handle more complex routes
+    "/posts": Posts, // TODO add /posts/:username
   };
   
   const renderRoute = path => {
-    if (routes[path]) {
-      return routes[path]();
-    }
-    else if (/:/.test(path)) {
-      path = path.replace(/\/:.+/, "");
-      return routes[path] ? routes[path](path.match(/:[^/$]+/)) : NotFound();
-    }
-    
-    return NotFound();
+    const chunks = [...path.matchAll(/\/[^\/]*/g)]; // TODO see above
+    const resId = chunks[1];
+    const page = chunks[0];
+    return routes[page] ? routes[page](resId) : NotFound();
   };
   
   const render = (rootEl, path) => {
