@@ -1,33 +1,26 @@
 (() => {
-  const back = a => a[a.length-1];
   const routes = {
-    "": Home,
-    "about": About,
+    "/": Home,
+    "/about": About,
+    //"/posts/:username": Posts, // TODO
   };
   
-  const parseLocation = () => {
-    const url = new URL(window.location.href);
-    const path = url.pathname.split("/").filter(Boolean);
-    // TODO follow REST resource resource/id format and disallow leading garbage
-    return back(path) || ""; 
-  };
-  
-  const render = (rootEl, page, resource) => {
+  const render = (rootEl, page) => {
     rootEl.innerHTML = routes[page] ? routes[page]() : NotFound();
-    [...document.querySelectorAll(".navigable")].forEach(el => 
-      el.addEventListener("click", e => {
-        e.preventDefault();
-        const href = e.target.dataset.nav; // TODO allow resource/id
-        window.history.pushState({href}, href, `/${href}`);
-        render(rootEl, href);
+    document.querySelectorAll(".navigable").forEach(el => 
+      el.addEventListener("click", evt => {
+        evt.preventDefault();
+        const pathname = new URL(evt.target.href).pathname;
+        window.history.pushState({pathname}, pathname, pathname);
+        render(rootEl, pathname);
       })
     );
   };
 
   const appEl = document.querySelector("#app");
   window.addEventListener("popstate", e => {
-    render(appEl, parseLocation());
+    render(appEl, new URL(window.location.href).pathname);
   });
   
-  render(appEl, parseLocation());
+  render(appEl, new URL(window.location.href).pathname);
 })();
