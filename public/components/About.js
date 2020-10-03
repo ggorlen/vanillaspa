@@ -5,7 +5,9 @@ const About = () => {
       <h1>About</h1>
     </header>
     <main>
-      Just an experiment with vanilla SPA...
+      <p>
+        Just an experiment with vanilla SPA...
+      </p>
     </main>
   `;
 };
