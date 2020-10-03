@@ -2,12 +2,25 @@
   const routes = {
     "/": Home,
     "/about": About,
-    //"/posts/:username": Posts, // TODO
+    "/posts/:username": Posts, // TODO handle more complex routes
   };
   
-  const render = (rootEl, page) => {
-    rootEl.innerHTML = routes[page] ? routes[page]() : NotFound();
-    document.querySelectorAll(".navigable").forEach(el => 
+  const renderRoute = path => {
+    if (routes[path]) {
+      return routes[path]();
+    }
+    else if (/:/.test(path)) {
+      path = path.replace(/\/:.+/, "");
+      return routes[path] ? routes[path](path.match(/:[^/$]+/)) : NotFound();
+    }
+    
+    return NotFound();
+  };
+  
+  const render = (rootEl, path) => {
+    rootEl.innerHTML = renderRoute(path);
+    
+    document.querySelectorAll('[href^="/"]').forEach(el => 
       el.addEventListener("click", evt => {
         evt.preventDefault();
         const pathname = new URL(evt.target.href).pathname;
