@@ -7,9 +7,15 @@
   
   const render = (rootEl, path) => {
     const page = path.match(/\/[^\/]*/g)[0];
-    //rootEl.children[0] && rootEl.children[0].remove();
-    //rootEl.appendChild(routes[page] ? routes[page]() : NotFound());
-    rootEl.innerHTML = (routes[page] ? routes[page]() : NotFound());
+    const toRender = routes[page] ? routes[page]() : NotFound();
+    
+    if (typeof toRender === "string") {
+      rootEl.innerHTML = toRender;
+    }
+    else {
+      rootEl.textContent = "";
+      rootEl.appendChild(toRender);
+    }
     
     document.querySelectorAll('[href^="/"]').forEach(el => 
       el.addEventListener("click", evt => {

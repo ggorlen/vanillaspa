@@ -1,6 +1,6 @@
 const Posts = () => {
   const username = new URL(window.location.href)
-    .pathname.match(/(?<=posts\/).+$/);
+    .pathname.match(/(?<=posts\/)[^\/]+/);
   
   const template = document.createElement("div");
   template.innerHTML = `
@@ -23,7 +23,6 @@ const Posts = () => {
     setTimeout(() => {
       // TODO maybe return a promise and reject it if the page reloads.
       // or return/store references to any elements we care about in a systematic way.
-      console.log(pEl)
       pEl && (pEl.innerHTML = `pretending to get posts for ${username} worked!`);
     }, 2000);
   }
