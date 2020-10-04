@@ -1,3 +1,5 @@
+import Home from "./Home";
+
 (() => {
   const routes = {
     "/": Home,
