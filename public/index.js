@@ -1,3 +1,11 @@
+import About from "./components/about.js";
+import add from "./components/Test2.js";
+
+import Home from "./components/home.js";
+//import NotFound from "./not-found.js";
+//import Posts from "./posts.js";
+
+console.log(add(1, 2));
 
 //(() => {
 //  const routes = {
