@@ -9,6 +9,7 @@
     const page = path.match(/\/[^\/]*/g)[0];
     const toRender = routes[page] ? routes[page]() : NotFound();
     
+    // A component can return either a template string or a DOM element
     if (typeof toRender === "string") {
       rootEl.innerHTML = toRender;
     }
@@ -17,6 +18,7 @@
       rootEl.appendChild(toRender);
     }
     
+    // Find all of the links that begin with `/` and plug them into the router
     document.querySelectorAll('[href^="/"]').forEach(el => 
       el.addEventListener("click", evt => {
         evt.preventDefault();

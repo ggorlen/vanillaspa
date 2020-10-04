@@ -15,5 +15,5 @@ POC vanilla SPA experiment
 ## TODO 
 - add /posts/:username or more complex resource paths
 - set up es6 modules
-- find a better way to abort requests after rendering
+- find a better way to handle elements no longer existing and fetch calls needing abortion after a navigation occurs
 - https://restfulapi.net/resource-naming/
