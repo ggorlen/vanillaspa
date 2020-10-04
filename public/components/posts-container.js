@@ -1,3 +1,5 @@
+import Nav from "./nav";
+
 const PostsContainer = (posts, username) => {
   const template = document.createElement("div");
   template.innerHTML = `
@@ -26,3 +28,5 @@ const PostsContainer = (posts, username) => {
   
   return template;
 };
+
+export default PostsContainer;

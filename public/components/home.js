@@ -1,3 +1,5 @@
+import Nav from "./nav";
+
 const Home = () => {
   fetch("https://api.github.com/gists/public")
     .then(res => res.json())
@@ -30,3 +32,5 @@ const Home = () => {
     </main>
   `;
 };
+
+export default Home;

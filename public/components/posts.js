@@ -1,3 +1,6 @@
+import Nav from "./nav";
+import PostsContainer from "./posts-container";
+
 const Posts = () => {
   const template = document.createElement("div");
   const username = new URL(window.location.href)
@@ -32,3 +35,5 @@ const Posts = () => {
   `;
   return template;
 };
+
+export default Posts;

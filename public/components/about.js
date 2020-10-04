@@ -1,3 +1,5 @@
+import Nav from "./nav";
+
 const About = () => {
   return `
     ${Nav()}
@@ -11,3 +13,5 @@ const About = () => {
     </main>
   `;
 };
+
+export default About;

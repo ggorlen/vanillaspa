@@ -1,3 +1,5 @@
+import Nav from "./nav";
+
 const NotFound = () => {
   return `
     ${Nav()}
@@ -8,3 +10,5 @@ const NotFound = () => {
     </main>
   `;
 };
+
+export default NotFound;
