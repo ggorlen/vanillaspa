@@ -2,18 +2,8 @@ const Posts = () => {
   const username = new URL(window.location.href)
     .pathname.match(/(?<=posts\/).+$/);
   
-  if (username) {
-    setTimeout(() => {
-      
-      // TODO upon navigation away, this could point to the wrong thing.
-      // can use ids but this is pretty restrictive, we should 
-      // return a promise and reject it if the page reloads.
-      const el = document.querySelector("main > p"); 
-      el && (el.innerHTML = "it worked!");
-    }, 2000);
-  }
-  
-  return `
+  const template = document.createElement("div");
+  template.innerHTML = `
     ${Nav()}
     <header>
       <h1>Posts</h1>
@@ -27,4 +17,16 @@ const Posts = () => {
       </p>
     </main>
   `;
+  const pEl = template.querySelector("main > p");
+  
+  if (username) {
+    setTimeout(() => {
+      // TODO maybe return a promise and reject it if the page reloads.
+      // or return/store references to any elements we care about in a systematic way.
+      console.log(pEl)
+      pEl && (pEl.innerHTML = `pretending to get posts for ${username} worked!`);
+    }, 2000);
+  }
+  
+  return template;
 };

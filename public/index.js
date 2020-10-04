@@ -6,9 +6,10 @@
   };
   
   const render = (rootEl, path) => {
-    const chunks = path.match(/\/[^\/]*/g);
-    const [page] = chunks;
-    rootEl.innerHTML = routes[page] ? routes[page]() : NotFound();
+    const page = path.match(/\/[^\/]*/g)[0];
+    //rootEl.children[0] && rootEl.children[0].remove();
+    //rootEl.appendChild(routes[page] ? routes[page]() : NotFound());
+    rootEl.innerHTML = (routes[page] ? routes[page]() : NotFound());
     
     document.querySelectorAll('[href^="/"]').forEach(el => 
       el.addEventListener("click", evt => {
