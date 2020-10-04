@@ -1,6 +1,6 @@
 # Vanilla SPA
 
-POC vanilla SPA experiment
+POC vanilla SPA experiment.
 
 ### Resources
 - https://glitch.com/edit/#!/vanilla-spa?path=script.js%3A24%3A12
@@ -11,11 +11,11 @@ POC vanilla SPA experiment
 - https://github.com/ewan-m/vanilla-js-spa/blob/master/routing/router.js
 - https://glitch.com/edit/#!/vanilla-spa?path=script.js%3A3%3A16
 - https://gomakethings.com/how-to-update-the-browser-url-without-refreshing-the-page-using-the-vanilla-js-history-api/
+- https://restfulapi.net/resource-naming/
 
 ## TODO 
-- add /posts/:username or more complex resource paths
-- set up es6 modules
+- [set up es6 modules](https://glitch.com/edit/#!/flavio-es-modules-example?path=script.js%3A1%3A0)
 - find a better way to handle elements no longer existing and fetch calls needing abortion after a navigation occurs.
   - TODO maybe return a promise and reject it if the page reloads.
   - or return/store references to any elements we care about in a systematic way.
-- https://restfulapi.net/resource-naming/
+    - kind of getting into virtual DOM territory...

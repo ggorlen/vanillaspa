@@ -11,8 +11,10 @@ const Home = () => {
       gistsEl.appendChild(ul);
       data.forEach(e => {
         const li = document.createElement("li");
-        li.innerHTML = `<a href="${e.html_url}">${e.description || e.html_url}</a>`;
         ul.appendChild(li);
+        li.innerHTML = `
+          <a href="${e.html_url}">${e.description || e.html_url}</a>
+        `;
       });
     })
   ;
