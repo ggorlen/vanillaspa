@@ -1,5 +1,8 @@
 const Posts = username => {
   
+  if (useranme) {
+    setTimeout()
+  }
   
   return `
     ${Nav()}
@@ -8,7 +11,7 @@ const Posts = username => {
     </header>
     <main>
       <p>
-        We could fetch the posts for ${username} here...
+        ${username ?  "loading posts for " + username : 'try clicking <a href="here/posts/greg'}
       </p>
     </main>
   `;
