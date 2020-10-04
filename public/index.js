@@ -2,17 +2,13 @@
   const routes = {
     "/": Home,
     "/about": About,
-    "/posts": Posts, // TODO add /posts/:username or more complex resource paths
-  };
-  
-  const renderRoute = path => {
-    const chunks = path.match(/\/[^\/]*/g); // TODO see above
-    const [page, resId] = chunks;
-    return routes[page] ? routes[page]((resId || "").slice(1)) : NotFound();
+    "/posts": Posts, 
   };
   
   const render = (rootEl, path) => {
-    rootEl.innerHTML = renderRoute(path);
+    const chunks = path.match(/\/[^\/]*/g);
+    const [page] = chunks;
+    rootEl.innerHTML = routes[page] ? routes[page]() : NotFound();
     
     document.querySelectorAll('[href^="/"]').forEach(el => 
       el.addEventListener("click", evt => {

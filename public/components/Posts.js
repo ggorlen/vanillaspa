@@ -1,10 +1,13 @@
-const Posts = username => {
+const Posts = () => {
+  const username = new URL(window.location.href)
+    .pathname.match(/(?<=posts\/).+$/);
+  
   if (username) {
     setTimeout(() => {
       
-      // TODO we really should make sure this elem is part of our 
-      // page and not some other main > p ...
-      // ... can use ids but maybe there's a better approach
+      // TODO upon navigation away, this could point to the wrong thing.
+      // can use ids but this is pretty restrictive, we should 
+      // return a promise and reject it if the page reloads.
       const el = document.querySelector("main > p"); 
       el && (el.innerHTML = "it worked!");
     }, 2000);
