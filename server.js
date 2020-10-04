@@ -1,9 +1,10 @@
 const express = require("express");
+const path = require("path");
 
 const app = express();
 
 app.use(express.static("public"));
-//app.use('/public', express.static(__dirname + '/public' ));
+app.use(express.static(path.join("public", "components")));
 
 app.get("*", (req, res) => {
   res.sendFile(__dirname + "/views/index.html");
