@@ -1,3 +1,4 @@
+
 const Posts = () => {
   const template = document.createElement("div");
   const username = new URL(window.location.href)
@@ -5,28 +6,7 @@ const Posts = () => {
   
   if (username) {
     setTimeout(() => {
-      console.log()
-      template.querySelector("main > p")
-              .innerHTML = `
-        <div>
-          pretending to get posts for ${username} worked!
-        </div>
-        <ul>
-          <li>foo</li>
-          <li>bar</li>
-          <li>baz</li>
-        </ul>
-        <button>click to sort the list above</button>
-      `;
-      template.querySelector("button")
-        .addEventListener("click", e => {
-          const ul = template.querySelector("ul");
-          const children = [...ul.children]
-            .sort((a, b) => a.textContent.localeCompare(b.textContent));
-          ul.textContent = "";
-          ul.append(...children);
-        })
-      ;
+      template.querySelector("main Posts(["bar", "baz", "foo", "quux"], username);
     }, 2000);
   }
   
