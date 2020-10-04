@@ -1,4 +1,4 @@
-const Post = (posts, username) => {
+const PostsContainer = (posts, username) => {
   const template = document.createElement("div");
   template.innerHTML = `
     <div>

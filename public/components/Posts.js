@@ -1,12 +1,18 @@
-
 const Posts = () => {
   const template = document.createElement("div");
   const username = new URL(window.location.href)
     .pathname.match(/(?<=posts\/)[^\/]+/);
   
   if (username) {
-    setTimeout(() => {
-      template.querySelector("main Posts(["bar", "baz", "foo", "quux"], username);
+    (new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(["bar", "baz", "foo", "quux"]);
+      }, 2000);
+    }))
+    .then(data => {
+      const mainEl = template.querySelector("main");
+      mainEl.textContent = "";
+      mainEl.append(PostsContainer(data, username));
     }, 2000);
   }
   
