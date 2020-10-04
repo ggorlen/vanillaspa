@@ -6,7 +6,7 @@ const About = () => {
     </header>
     <main>
       <p>
-        Just an experiment with vanilla SPA...
+        Just an experiment with <a href="http://vanilla-js.com/">🍦</a>
       </p>
     </main>
   `;
