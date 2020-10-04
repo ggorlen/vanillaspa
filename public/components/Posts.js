@@ -5,8 +5,28 @@ const Posts = () => {
   
   if (username) {
     setTimeout(() => {
+      console.log()
       template.querySelector("main > p")
-              .innerHTML = `pretending to get posts for ${username} worked!`;
+              .innerHTML = `
+        <div>
+          pretending to get posts for ${username} worked!
+        </div>
+        <ul>
+          <li>foo</li>
+          <li>bar</li>
+          <li>baz</li>
+        </ul>
+        <button>click to sort the list above</button>
+      `;
+      template.querySelector("button")
+        .addEventListener("click", e => {
+          const ul = template.querySelector("ul");
+          const children = [...ul.children]
+            .sort((a, b) => a.textContent.localeCompare(b.textContent));
+          ul.textContent = "";
+          ul.append(...children);
+        })
+      ;
     }, 2000);
   }
   
