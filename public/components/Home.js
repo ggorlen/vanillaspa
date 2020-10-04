@@ -1,4 +1,4 @@
-import Nav from "./nav.js";
+import Nav from "./Nav.js";
 
 const Home = () => {
   fetch("https://api.github.com/gists/public")

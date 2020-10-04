@@ -1,5 +1,5 @@
-import Nav from "./nav.js";
-import PostsContainer from "./posts-container.js";
+import Nav from "./Nav.js";
+import PostsContainer from "./PostsContainer.js";
 
 const Posts = () => {
   const template = document.createElement("div");

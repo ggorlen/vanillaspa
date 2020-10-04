@@ -1,4 +1,4 @@
-import Nav from "./nav.js";
+import Nav from "./Nav.js";
 
 const PostsContainer = (posts, username) => {
   const template = document.createElement("div");

@@ -1,7 +1,7 @@
-import About from "./components/about.js";
-import Home from "./components/home.js";
-import NotFound from "./components/not-found.js";
-import Posts from "./components/posts.js";
+import About from "./components/About.js";
+import Home from "./components/Home.js";
+import NotFound from "./components/NotFound.js";
+import Posts from "./components/Posts.js";
 
 (() => {
   const routes = {
