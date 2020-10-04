@@ -15,5 +15,7 @@ POC vanilla SPA experiment
 ## TODO 
 - add /posts/:username or more complex resource paths
 - set up es6 modules
-- find a better way to handle elements no longer existing and fetch calls needing abortion after a navigation occurs
+- find a better way to handle elements no longer existing and fetch calls needing abortion after a navigation occurs.
+  - TODO maybe return a promise and reject it if the page reloads.
+  - or return/store references to any elements we care about in a systematic way.
 - https://restfulapi.net/resource-naming/

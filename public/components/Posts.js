@@ -1,8 +1,15 @@
 const Posts = () => {
+  const template = document.createElement("div");
   const username = new URL(window.location.href)
     .pathname.match(/(?<=posts\/)[^\/]+/);
   
-  const template = document.createElement("div");
+  if (username) {
+    setTimeout(() => {
+      template.querySelector("main > p")
+              .innerHTML = `pretending to get posts for ${username} worked!`;
+    }, 2000);
+  }
+  
   template.innerHTML = `
     ${Nav()}
     <header>
@@ -17,15 +24,5 @@ const Posts = () => {
       </p>
     </main>
   `;
-  const pEl = template.querySelector("main > p");
-  
-  if (username) {
-    setTimeout(() => {
-      // TODO maybe return a promise and reject it if the page reloads.
-      // or return/store references to any elements we care about in a systematic way.
-      pEl && (pEl.innerHTML = `pretending to get posts for ${username} worked!`);
-    }, 2000);
-  }
-  
   return template;
 };
