@@ -14,7 +14,6 @@ POC vanilla SPA experiment.
 - https://restfulapi.net/resource-naming/
 
 ## TODO 
-- [set up es6 modules](https://glitch.com/edit/#!/flavio-es-modules-example?path=script.js%3A1%3A0)
 - find a better way to handle elements no longer existing and fetch calls needing abortion after a navigation occurs.
   - TODO maybe return a promise and reject it if the page reloads.
   - or return/store references to any elements we care about in a systematic way.
