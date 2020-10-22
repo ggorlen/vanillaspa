@@ -13,7 +13,7 @@ POC vanilla SPA experiment.
 - https://gomakethings.com/how-to-update-the-browser-url-without-refreshing-the-page-using-the-vanilla-js-history-api/
 - https://restfulapi.net/resource-naming/
 
-## TODO 
+## TODO
 - find a better way to handle elements no longer existing and fetch calls needing abortion after a navigation occurs.
   - TODO maybe return a promise and reject it if the page reloads.
   - or return/store references to any elements we care about in a systematic way.
