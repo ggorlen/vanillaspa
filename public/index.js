@@ -7,11 +7,12 @@ import Posts from "./components/Posts.js";
   const routes = {
     "/": Home,
     "/about": About,
-    "/posts": Posts, 
+    "/posts": Posts,
   };
   
   const render = (rootEl, path) => {
-    const page = path.match(/\/[^\/]*/g)[0]; // TODO support /foo/baz/resource
+    const page = path.match(/\/[^\/]*/g)[0];
+    console.log(path)
     const toRender = routes[page] ? routes[page]() : NotFound();
     
     // A component can return either a template string or a DOM element
