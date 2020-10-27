@@ -12,7 +12,7 @@ import Posts from "./components/Posts.js";
   
   const render = (rootEl, path) => {
     const chunks = path.split("/");
-    const resource = chunks.length > 2 ? chunks.pop() : null;
+    const resource = chunks.length > 2 ? chunks.pop() : null; // TODO unused
     const page = chunks.join("/");
     const toRender = routes[page] ? routes[page]() : NotFound();
     
