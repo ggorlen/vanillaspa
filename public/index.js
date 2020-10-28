@@ -8,6 +8,7 @@ import Posts from "./components/Posts.js";
     "/": Home,
     "/about": About,
     "/posts": Posts,
+    //"/posts/:username": Posts, // TODO
   };
   
   const render = (rootEl, path) => {
