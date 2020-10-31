@@ -13,9 +13,13 @@ POC vanilla SPA experiment.
 - https://gomakethings.com/how-to-update-the-browser-url-without-refreshing-the-page-using-the-vanilla-js-history-api/
 - https://restfulapi.net/resource-naming/
 - https://github.com/AurelianSpodarec/Calendar_Dashboard
+- https://stackoverflow.com/questions/54231533/how-to-create-a-vanilla-js-routing-for-spa
+- https://www.npmjs.com/package/director
+- https://github.com/flatiron/director
+- https://github.com/ryanramage/miki
 
 ## TODO
 - find a better way to handle elements no longer existing and fetch calls needing abortion after a navigation occurs.
-  - TODO maybe return a promise and reject it if the page reloads.
-  - or return/store references to any elements we care about in a systematic way.
+  - TODO maybe return a promise  and reject it if the page reloads.
+  - or return/store references to any elements we care about in a systematic way as a cleanup function.
     - kind of getting into virtual DOM territory...
