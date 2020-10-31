@@ -12,6 +12,7 @@ POC vanilla SPA experiment.
 - https://glitch.com/edit/#!/vanilla-spa?path=script.js%3A3%3A16
 - https://gomakethings.com/how-to-update-the-browser-url-without-refreshing-the-page-using-the-vanilla-js-history-api/
 - https://restfulapi.net/resource-naming/
+- https://github.com/AurelianSpodarec/Calendar_Dashboard
 
 ## TODO
 - find a better way to handle elements no longer existing and fetch calls needing abortion after a navigation occurs.

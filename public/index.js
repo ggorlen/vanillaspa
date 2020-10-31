@@ -27,14 +27,14 @@ import Posts from "./components/Posts.js";
     }
     
     // Find all of the links that begin with `/` and plug them into the router
-    document.querySelectorAll('[href^="/"]').forEach(el => 
-      el.addEventListener("click", evt => {
-        evt.preventDefault();
-        const pathname = new URL(evt.target.href).pathname;
-        window.history.pushState({pathname}, pathname, pathname);
-        render(rootEl, pathname);
-      })
-    );
+    //document.querySelectorAll('[href^="/"]').forEach(el => 
+    //  el.addEventListener("click", evt => {
+    //    evt.preventDefault();
+    //    const pathname = new URL(evt.target.href).pathname;
+    //    window.history.pushState({pathname}, pathname, pathname);
+    //    render(rootEl, pathname);
+    //  })
+    //);
   };
 
   const appEl = document.querySelector("#app");
