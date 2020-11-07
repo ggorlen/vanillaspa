@@ -1,6 +1,6 @@
 # Vanilla SPA
 
-POC vanilla SPA experiment.
+POC vanilla SPA experiment
 
 ### Resources
 - https://glitch.com/edit/#!/vanilla-spa?path=script.js%3A24%3A12
@@ -19,7 +19,8 @@ POC vanilla SPA experiment.
 - https://github.com/ryanramage/miki
 
 ## TODO
+- try a separate hash router version
 - find a better way to handle elements no longer existing and fetch calls needing abortion after a navigation occurs.
-  - TODO maybe return a promise  and reject it if the page reloads.
+  - TODO maybe return a promise and reject it if the page reloads.
   - or return/store references to any elements we care about in a systematic way as a cleanup function.
     - kind of getting into virtual DOM territory...
