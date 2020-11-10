@@ -9,7 +9,6 @@ POC vanilla SPA experiment
 - https://dev.to/rishavs/making-a-single-page-app-in-ye-good-olde-js-es6-3eng
 - https://medium.com/better-programming/js-vanilla-script-spa-1b29b43ea475
 - https://github.com/ewan-m/vanilla-js-spa/blob/master/routing/router.js
-- https://glitch.com/edit/#!/vanilla-spa?path=script.js%3A3%3A16
 - https://gomakethings.com/how-to-update-the-browser-url-without-refreshing-the-page-using-the-vanilla-js-history-api/
 - https://restfulapi.net/resource-naming/
 - https://github.com/AurelianSpodarec/Calendar_Dashboard
@@ -17,9 +16,9 @@ POC vanilla SPA experiment
 - https://www.npmjs.com/package/director
 - https://github.com/flatiron/director
 - https://github.com/ryanramage/miki
+- https://stackoverflow.com/questions/26395992/single-page-application-router-without-hash-and-small
 
 ## TODO
-- try a separate hash router version
 - find a better way to handle elements no longer existing and fetch calls needing abortion after a navigation occurs.
   - TODO maybe return a promise and reject it if the page reloads.
   - or return/store references to any elements we care about in a systematic way as a cleanup function.
