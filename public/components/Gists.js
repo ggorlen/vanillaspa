@@ -1,5 +1,6 @@
 import GistsContainer from "./GistsContainer.js";
 import Nav from "./Nav.js";
+import renderer from "../renderer.js";
 
 export default username => {
   const searchForm = `
@@ -47,8 +48,7 @@ export default username => {
       .addEventListener("click", e => {
         const username = template.querySelector("input").value;
         const pathname = `${window.location.href}/${username}`;
-      window.location.href = pathname;
-        //window.history.pushState({pathname}, pathname, pathname);
+        redirect(pathname);
       })
     ;
   }
