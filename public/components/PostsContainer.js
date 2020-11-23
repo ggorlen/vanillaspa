@@ -7,7 +7,7 @@ const PostsContainer = (posts, username) => {
       pretending to get posts for ${username} worked!
     </div>
     <ul>
-      ${posts.map(e => `<li>${e}</lI>`).join("")}
+      ${posts.map(e => `<li>${e}</li>`).join("")}
     </ul>
     <button>click to sort the list above</button>
   `;
