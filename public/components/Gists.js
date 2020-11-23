@@ -1,6 +1,6 @@
 import GistsContainer from "./GistsContainer.js";
 import Nav from "./Nav.js";
-import {render} from "../renderer.js";
+import {redirect} from "../renderer.js";
 
 export default username => {
   const searchForm = `
@@ -47,7 +47,7 @@ export default username => {
       .querySelector("button")
       .addEventListener("click", e => {
         const username = template.querySelector("input").value;
-        render(`/gists/${username}`);
+        redirect(`/gists/${username}`);
       })
     ;
   }

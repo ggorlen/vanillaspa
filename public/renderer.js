@@ -16,7 +16,8 @@ const renderer = (() => {
     const toRender = _routes[page] 
       ? _routes[page](resource) : _NotFound()
     ;
-        // A component can return either a template string or a DOM element
+    
+    // A component can return either a template string or a DOM element
     if (typeof toRender === "string") {
       _rootEl.innerHTML = toRender;
     }
@@ -24,18 +25,23 @@ const renderer = (() => {
       _rootEl.textContent = "";
       _rootEl.appendChild(toRender);
     }
-        // Find all of the links that begin with `/` and plug them into the router
+    
+    // Find all of the links that begin with `/` and plug them into the router
     _rootEl.querySelectorAll('[href^="/"]').forEach(el => 
       el.addEventListener("click", evt => {
         evt.preventDefault();
-        const {pathname} = new URL(evt.target.href);
-        window.history.pushState({pathname}, pathname, pathname);
-        render(pathname);
+        redirect(new URL(evt.target.href).pathname);
       })
     );
   };
-  return {initialize, render};
+  
+  function redirect(pathname) {
+    window.history.pushState({pathname}, pathname, pathname);
+    render(pathname);
+  }
+  
+  return {initialize, render, redirect};
 })();
 
-export const {initialize, render} = renderer;
+export const {initialize, render, redirect} = renderer;
 export default renderer;
