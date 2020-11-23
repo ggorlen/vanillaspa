@@ -30,22 +30,27 @@ export default username => {
       <h1>Gists</h1>
     </header>
     <main>
-      ${username ? `<p>retrieving gists for ${}` : ${searchForm}
+      ${username
+        ? `<p>Retrieving gists for ${username}...</p>`
+        : searchForm
+      }
     </main>
   `;
   const mainEl = template.querySelector("main");
-  template
-    .querySelector("button")
-    .addEventListener("click", e => {
-      const username = template.querySelector("input").value;
-      const pathname = `${window.location.href}/${username}`;
-    window.location.href = pathname;
-      //window.history.pushState({pathname}, pathname, pathname);
-    })
-  ;
   
   if (username) {
     getGists(username, mainEl);
+  }
+  else {
+    template
+      .querySelector("button")
+      .addEventListener("click", e => {
+        const username = template.querySelector("input").value;
+        const pathname = `${window.location.href}/${username}`;
+      window.location.href = pathname;
+        //window.history.pushState({pathname}, pathname, pathname);
+      })
+    ;
   }
   
   return template;
