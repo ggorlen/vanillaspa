@@ -10,7 +10,7 @@ const Renderer = (() => {
   };
   
   const render = path => {
-    const chunks = path.replace(/\/+$/, "").split("/");
+    const chunks = path.split("/");
     const resource = chunks.length > 2 ? chunks.pop() : undefined;
     const page = chunks.join("/");
     const toRender = _routes[page] 

@@ -1,4 +1,4 @@
-import {redirect} from "../renderer.js";
+import {redirect} from "../Renderer.js";
 
 export default () => {
   const searchForm = document.createElement("form");

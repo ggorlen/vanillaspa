@@ -31,17 +31,19 @@ export default username => {
       <h1>Gists</h1>
     </header>
     <main>
+      <div id="gist-search"></div>
       <div id="result">
         ${username ? `<p>Retrieving gists for ${username}...</p>` : ""}
       </div>
     </main>
   `;
+  template.querySelector("#gist-search")
+    .append(GistSearch())
+  ;
   
   if (username) {
     getGists(username, template.querySelector("#result"));
   }
   
-  const mainEl = template.querySelector("main");
-  mainEl.prepend(GistSearch());
   return template;
 };
