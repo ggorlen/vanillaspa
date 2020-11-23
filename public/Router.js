@@ -1,4 +1,4 @@
-const Renderer = (() => {
+const Router = (() => {
   let _rootEl;
   let _routes;
   let _NotFound;
@@ -43,5 +43,5 @@ const Renderer = (() => {
   return {init, render, redirect};
 })();
 
-export const {init, render, redirect} = Renderer;
-export default Renderer;
+export const {render, redirect} = Router;
+export default Router;
