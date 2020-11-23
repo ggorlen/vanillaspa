@@ -14,15 +14,14 @@ export default username => {
       })
       .then(data => {
         if (data.length) {
-          el.innerHTML = 'GistsContainer(data, username);
+          el.innerHTML = GistsContainer(data, username);
         }
-        
-        el.innerHTML = `<p>${username} has no gists.</p>`;
-        el.append(GistSearch());
+        else {
+          el.innerHTML = `<p>${username} has no gists.</p>`;
+        }
       })
       .catch(err => {
         el.innerHTML = `<p>Failed to retrieve gists for ${username}.</p>`;
-        el.append(GistSearch());
       })
   ;
   const template = document.createElement("div");
@@ -32,18 +31,17 @@ export default username => {
       <h1>Gists</h1>
     </header>
     <main>
-      <p>Retrieving gists for ${username}...</p>
+      <div id="result">
+        <p>Retrieving gists for ${username}...</p>
+      </div>
     </main>
   `;
   
   if (username) {
-    getGists(username, template.querySelector("main"));
-  }
-  else {
-    const mainEl = template.querySelector("main");
-    mainEl.innerHTML = "";
-    mainEl.append(GistSearch());
+    getGists(username, template.querySelector("#result"));
   }
   
+  const mainEl = template.querySelector("main");
+  mainEl.prepend(GistSearch());
   return template;
 };
