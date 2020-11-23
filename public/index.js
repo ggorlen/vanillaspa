@@ -1,7 +1,8 @@
 import About from "./components/About.js";
 import Home from "./components/Home.js";
 import Gists from "./components/Gists.js";
-import renderer from "./renderer.js";
+import NotFound from "./components/NotFound.js";
+import {initialize, render} from "./renderer.js";
 
 (() => {
   const routes = {
@@ -10,9 +11,9 @@ import renderer from "./renderer.js";
     "/gists": Gists,
     // TODO "/gists/:username" format
   };
-  renderer.initialize(document.querySelector("#app"), routes);
+  initialize(document.querySelector("#app"), routes, NotFound);
   window.addEventListener("popstate", e => {
-    renderer.render(new URL(window.location.href).pathname);
+    render(new URL(window.location.href).pathname);
   });
-  renderer.render(new URL(window.location.href).pathname);
+  render(new URL(window.location.href).pathname);
 })();

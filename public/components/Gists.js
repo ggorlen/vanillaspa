@@ -47,7 +47,7 @@ export default username => {
       .querySelector("button")
       .addEventListener("click", e => {
         const username = template.querySelector("input").value;
-        renderer.render(`gists/${username}`);
+        renderer.render(`/gists/${username}`);
       })
     ;
   }
