@@ -4,23 +4,30 @@ import {redirect} from "../renderer.js";
 
 export default username => {
   const searchForm = `
-    <div>
+    <form>
       <input placeholder="GitHub username" value="ggorlen" />
-      <button>Find gists</button>
-    </div>
+      <input type="submit" value="Find gists" />
+    </form>
   `;
   const getGists = (username, el) => 
     fetch(`https://api.github.com/users/${username}/gists`)
-      .then(response => response.json())
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+        
+        throw Error(`Fetch failed ${response.status}`)
+      })
       .then(data => {
-        el.innerHTML = GistsContainer(data, username);
+        el.innerHTML = data.length 
+          ? GistsContainer(data, username)
+          : `<p>${username} has no gists</p>`
+        ;
       })
       .catch(err => {
+        console.error(err);
         el.innerHTML = `
-          <p>
-            Failed to retrieve gists for ${username}.
-          </p>
-          ${searchForm}
+          <p>Failed to retrieve gists for ${username}.</p>
         `;
       })
   ;
@@ -37,15 +44,14 @@ export default username => {
       }
     </main>
   `;
-  const mainEl = template.querySelector("main");
   
   if (username) {
-    getGists(username, mainEl);
+    getGists(username, template.querySelector("main"));
   }
   else {
     template
-      .querySelector("button")
-      .addEventListener("click", e => {
+      .querySelector("form")
+      .addEventListener("submit", e => {
         const username = template.querySelector("input").value;
         redirect(`/gists/${username}`);
       })

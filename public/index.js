@@ -2,7 +2,7 @@ import About from "./components/About.js";
 import Home from "./components/Home.js";
 import Gists from "./components/Gists.js";
 import NotFound from "./components/NotFound.js";
-import {initialize as initRenderer, render} from "./renderer.js";
+import {init as initRenderer, render} from "./renderer.js";
 
 (() => {
   const routes = {

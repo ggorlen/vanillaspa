@@ -1,9 +1,9 @@
-const renderer = (() => {
+const Renderer = (() => {
   let _rootEl;
   let _routes;
   let _NotFound;
   
-  const initialize = (rootEl, routes, NotFound) => {
+  const init = (rootEl, routes, NotFound) => {
     _rootEl = rootEl;
     _routes = routes;
     _NotFound = NotFound;
@@ -40,8 +40,8 @@ const renderer = (() => {
     render(pathname);
   }
   
-  return {initialize, render, redirect};
+  return {init, render, redirect};
 })();
 
-export const {initialize, render, redirect} = renderer;
-export default renderer;
+export const {init, render, redirect} = Renderer;
+export default Renderer;
