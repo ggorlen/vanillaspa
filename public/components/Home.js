@@ -2,7 +2,13 @@ import Nav from "./Nav.js";
 
 export default () => {
   fetch("https://api.github.com/gists/public")
-    .then(res => res.json())
+    .then(res => {
+      if (res.ok) {
+        return res.json();
+      }
+    
+      throw Error(`Unable to fetch gists [${res.status}]`);
+    })
     .then(data => {
       const gistsEl = document.querySelector("#gists");
     
@@ -19,7 +25,13 @@ export default () => {
         </ul>
       `;
     })
-    .catch(err => console.error(err))
+    .catch(err => {
+      const gistsEl = document.querySelector("#gists");
+    
+      if (!gistsEl) return;
+    
+      gistsEl.innerHTML = `<p>${err}</p>`;
+    })
   ;
   
   return `

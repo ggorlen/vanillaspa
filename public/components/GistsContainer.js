@@ -1,7 +1,7 @@
 export default (gists, username) => `
-  <div>
+  <p>
     Gists for ${username}:
-  </div>
+  </p>
   <ul>
     ${gists.map(e => `
       <li>

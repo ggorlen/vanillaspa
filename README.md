@@ -23,4 +23,3 @@ POC vanilla SPA experiment
   - TODO maybe return a promise and reject it if the page reloads.
   - or return/store references to any elements we care about in a systematic way as a cleanup function.
     - kind of getting into virtual DOM territory... could try simple hooks?
-    

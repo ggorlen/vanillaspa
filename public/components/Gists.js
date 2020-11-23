@@ -32,7 +32,7 @@ export default username => {
     </header>
     <main>
       <div id="result">
-        <p>Retrieving gists for ${username}...</p>
+        ${username ? `<p>Retrieving gists for ${username}...</p>` : ""}
       </div>
     </main>
   `;
