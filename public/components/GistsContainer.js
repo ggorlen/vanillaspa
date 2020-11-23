@@ -1,5 +1,3 @@
-import Nav from "./Nav.js";
-
 export default (gists, username) => `
   <div>
     Gists for ${username}:
