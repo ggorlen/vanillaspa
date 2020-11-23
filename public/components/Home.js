@@ -1,24 +1,25 @@
 import Nav from "./Nav.js";
 
-const Home = () => {
+export default () => {
   fetch("https://api.github.com/gists/public")
     .then(res => res.json())
     .then(data => {
       const gistsEl = document.querySelector("#gists");
     
-      if (!gistsEl) return; 
+      if (!gistsEl) return;
     
-      gistsEl.textContent = "";
-      const ul = document.createElement("ul");
-      gistsEl.appendChild(ul);
-      data.forEach(e => {
-        const li = document.createElement("li");
-        ul.appendChild(li);
-        li.innerHTML = `
-          <a href="${e.html_url}">${e.description || e.html_url}</a>
-        `;
-      });
+      gistsEl.innerHTML = `
+        <ul>${data.map(e => `
+          <li>
+            <a href="${e.html_url}">
+              ${e.description || e.html_url}
+            </a>
+          </li>
+        `).join("")}
+        </ul>
+      `;
     })
+    .catch(err => console.error(err))
   ;
   
   return `
@@ -32,5 +33,3 @@ const Home = () => {
     </main>
   `;
 };
-
-export default Home;

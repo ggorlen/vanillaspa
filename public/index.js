@@ -1,21 +1,21 @@
 import About from "./components/About.js";
 import Home from "./components/Home.js";
 import NotFound from "./components/NotFound.js";
-import Posts from "./components/Posts.js";
+import Gists from "./components/Gists.js";
 
 (() => {
   const routes = {
     "/": Home,
     "/about": About,
-    "/posts": Posts,
-    //"/posts/:username": Posts, // TODO
+    "/gists": Gists,
+    // TODO "/gists/:username" format
   };
   
   const render = (rootEl, path) => {
     const chunks = path.split("/");
-    const resource = chunks.length > 2 ? chunks.pop() : null; // TODO unused
+    const resource = chunks.length > 2 ? chunks.pop() : undefined;
     const page = chunks.join("/");
-    const toRender = routes[page] ? routes[page]() : NotFound();
+    const toRender = routes[page] ? routes[page](resource) : NotFound();
     
     // A component can return either a template string or a DOM element
     if (typeof toRender === "string") {
