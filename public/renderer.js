@@ -36,4 +36,6 @@ const renderer = (() => {
   };
   return {initialize, render};
 })();
+
 export const {initialize, render} = renderer;
+export default renderer;
