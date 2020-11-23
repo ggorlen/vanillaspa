@@ -2,6 +2,27 @@ import GistsContainer from "./GistsContainer.js";
 import Nav from "./Nav.js";
 
 export default username => {
+  const searchForm = `
+    <div>
+      <input placeholder="GitHub username" value="ggorlen" />
+      <button>Find gists</button>
+    </div>
+  `;
+  const getGists = (username, el) => 
+    fetch(`https://api.github.com/users/${username}/gists`)
+      .then(response => response.json())
+      .then(data => {
+        el.innerHTML = GistsContainer(data, username);
+      })
+      .catch(err => {
+        el.innerHTML = `
+          <p>
+            Failed to retrieve gists for ${username}.
+          </p>
+          ${searchForm}
+        `;
+      })
+  ;
   const template = document.createElement("div");
   template.innerHTML = `
     ${Nav()}
@@ -9,24 +30,22 @@ export default username => {
       <h1>Gists</h1>
     </header>
     <main>
-      <div>
-        <input placeholder="GitHub username" value="ggorlen" />
-        <button>Find gists</button>
-      </div>
+      ${username ? `<p>retrieving gists for ${}` : ${searchForm}
     </main>
   `;
   const mainEl = template.querySelector("main");
+  template
+    .querySelector("button")
+    .addEventListener("click", e => {
+      const username = template.querySelector("input").value;
+      const pathname = `${window.location.href}/${username}`;
+    window.location.href = pathname;
+      //window.history.pushState({pathname}, pathname, pathname);
+    })
+  ;
   
   if (username) {
-    fetch(`https://api.github.com/users/${username}/gists`)
-      .then(response => response.json())
-      .then(data => {
-        mainEl.innerHTML = GistsContainer(data, username);
-      })
-      .catch(err => {
-        mainEl.innerHTML = `failed to retrieve gists for ${username}`;
-      })
-    ;
+    getGists(username, mainEl);
   }
   
   return template;
