@@ -8,7 +8,7 @@ export default () => {
   `;
   searchForm.addEventListener("submit", e => {
     e.preventDefault();
-    redirect(`/gists/${e.target.elements[0]}`);
+    redirect(`/gists/${e.target.elements[0].value}`);
   });
   return searchForm;
 };

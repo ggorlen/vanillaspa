@@ -13,16 +13,16 @@ export default username => {
         throw Error(`Fetch failed [${response.status}]`)
       })
       .then(data => {
-        el.innerHTML = data.length 
-          ? GistsContainer(data, username)
-          : `<p>${username} has no gists.</p>${GistSearch()}`
-        ;
+        if (data.length) {
+          el.innerHTML = 'GistsContainer(data, username);
+        }
+        
+        el.innerHTML = `<p>${username} has no gists.</p>`;
+        el.append(GistSearch());
       })
       .catch(err => {
-        el.innerHTML = `
-          <p>Failed to retrieve gists for ${username}.</p>
-          ${GistSearch()}
-        `;
+        el.innerHTML = `<p>Failed to retrieve gists for ${username}.</p>`;
+        el.append(GistSearch());
       })
   ;
   const template = document.createElement("div");
@@ -32,15 +32,17 @@ export default username => {
       <h1>Gists</h1>
     </header>
     <main>
-      ${username
-        ? `<p>Retrieving gists for ${username}...</p>`
-        : GistSearch()
-      }
+      <p>Retrieving gists for ${username}...</p>
     </main>
   `;
   
   if (username) {
     getGists(username, template.querySelector("main"));
+  }
+  else {
+    const mainEl = template.querySelector("main");
+    mainEl.innerHTML = "";
+    mainEl.append(GistSearch());
   }
   
   return template;
