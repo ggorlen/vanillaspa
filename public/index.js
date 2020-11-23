@@ -10,10 +10,9 @@ import renderer from "./renderer.js";
     "/gists": Gists,
     // TODO "/gists/:username" format
   };
-  renderer.initialize(document.querySelector("#app")routes);
-  const appEl = document.querySelector("#app");
+  renderer.initialize(document.querySelector("#app"), routes);
   window.addEventListener("popstate", e => {
-    renderer.render(appEl, new URL(window.location.href).pathname);
+    renderer.render(new URL(window.location.href).pathname);
   });
-  renderer.render(appEl, new URL(window.location.href).pathname);
+  renderer.render(new URL(window.location.href).pathname);
 })();
