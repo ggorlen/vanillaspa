@@ -12,8 +12,8 @@ import Router, {render} from "./Router.js";
     // TODO "/gists/:username" format support
   };
   Router.init(document.querySelector("#app"), routes, NotFound);
+  render(new URL(window.location.href).pathname);
   window.addEventListener("popstate", e => {
     render(new URL(window.location.href).pathname);
   });
-  render(new URL(window.location.href).pathname);
 })();

@@ -3,7 +3,7 @@ const Router = (() => {
   let _routes;
   let _NotFound;
   
-  const init = (rootEl, routes, NotFound) => {
+  const init = (rootEl, routes, NotFound=() => "404") => {
     _rootEl = rootEl;
     _routes = routes;
     _NotFound = NotFound;
