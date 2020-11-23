@@ -10,7 +10,7 @@ const Renderer = (() => {
   };
   
   const render = path => {
-    const chunks = path.split("/");
+    const chunks = path.replace(/\/+$/, "").split("/");
     const resource = chunks.length > 2 ? chunks.pop() : undefined;
     const page = chunks.join("/");
     const toRender = _routes[page] 
@@ -35,9 +35,9 @@ const Renderer = (() => {
     );
   };
   
-  function redirect(pathname) {
-    window.history.pushState({pathname}, pathname, pathname);
-    render(pathname);
+  function redirect(path) {
+    window.history.pushState({path}, path, path);
+    render(path);
   }
   
   return {init, render, redirect};
