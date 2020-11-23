@@ -1,4 +1,4 @@
-export (() => {
+const renderer = (() => {
   let _rootEl;
   let _routes;
   let _NotFound;
@@ -34,4 +34,6 @@ export (() => {
       })
     );
   };
+  return {initialize, render};
 })();
+export const {initialize, render} = renderer;
