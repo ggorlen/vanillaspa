@@ -37,9 +37,7 @@ export default username => {
       </div>
     </main>
   `;
-  template.querySelector("#gist-search")
-    .append(GistSearch())
-  ;
+  template.querySelector("#gist-search").append(GistSearch());
   
   if (username) {
     getGists(username, template.querySelector("#result"));

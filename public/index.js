@@ -9,7 +9,6 @@ import Router, {render} from "./Router.js";
     "/": Home,
     "/about": About,
     "/gists": Gists,
-    // TODO "/gists/:username" format support
   };
   Router.init(document.querySelector("#app"), routes, NotFound);
   render(new URL(window.location.href).pathname);
