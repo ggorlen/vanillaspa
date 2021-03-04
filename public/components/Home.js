@@ -14,16 +14,16 @@ export default () => {
       // filter out spammy gists
       data = data.filter(e => 
         !e.description || 
-        !e.description.match(/untrusted|rimworld|LL:\d/gi)
+        !e.description.match(/Skills|untrusted|rimworld|LL:\d/gi)
       );
       setHTML("#gists", `
-        <ul>${mapJoin(data.map(e => `
+        <ul>${mapJoin(data, e => `
           <li>
             <a href="${e.html_url}">
               ${e.description || e.html_url}
             </a>
           </li>
-        `).join("")}
+        `)}
         </ul>
       `);
     })

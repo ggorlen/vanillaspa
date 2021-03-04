@@ -1,3 +1,7 @@
+const makeEl = document.createElement;
+
+const esc = s => s; // TODO escape HTML
+
 const mapJoin = (a, cb) => a.map(cb).join("");
   
 const setHTML = (el, html) => {
@@ -8,4 +12,4 @@ const setHTML = (el, html) => {
   el && (el.innerHTML = html);
 };
 
-export {mapJoin, setHTML};
+export {esc, mapJoin, setHTML};
