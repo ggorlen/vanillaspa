@@ -1,3 +1,5 @@
+const mapJoin = (a, cb) => a.map(cb).join("");
+  
 const setHTML = (el, html) => {
   if (typeof el === "string") {
     el = document.querySelector(el);
@@ -6,4 +8,4 @@ const setHTML = (el, html) => {
   el && (el.innerHTML = html);
 };
 
-export {setHTML};
+export {mapJoin, setHTML};

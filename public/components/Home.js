@@ -1,5 +1,5 @@
 import Nav from "./Nav.js";
-import {setHTML} from "../utils.js";
+import {mapJoin, setHTML} from "../utils.js";
 
 export default () => {
   fetch("https://api.github.com/gists/public")
@@ -11,12 +11,13 @@ export default () => {
       throw Error(`Unable to fetch gists [${res.status}]`);
     })
     .then(data => {
+      // filter out spammy gists
       data = data.filter(e => 
         !e.description || 
-        !e.description.match(/untrusted|rimworld/gi)
+        !e.description.match(/untrusted|rimworld|LL:\d/gi)
       );
       setHTML("#gists", `
-        <ul>${data.map(e => `
+        <ul>${mapJoin(data.map(e => `
           <li>
             <a href="${e.html_url}">
               ${e.description || e.html_url}
