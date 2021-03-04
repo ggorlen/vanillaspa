@@ -1,4 +1,5 @@
 import Nav from "./Nav.js";
+import {setHTML} from "../utils.js";
 
 export default () => {
   fetch("https://api.github.com/gists/public")
@@ -10,11 +11,11 @@ export default () => {
       throw Error(`Unable to fetch gists [${res.status}]`);
     })
     .then(data => {
-      const gistsEl = document.querySelector("#gists");
-    
-      if (!gistsEl) return;
-    
-      gistsEl.innerHTML = `
+      data = data.filter(e => 
+        !e.description || 
+        !e.description.match(/untrusted|rimworld/gi)
+      );
+      setHTML("#gists", `
         <ul>${data.map(e => `
           <li>
             <a href="${e.html_url}">
@@ -23,17 +24,10 @@ export default () => {
           </li>
         `).join("")}
         </ul>
-      `;
+      `);
     })
-    .catch(err => {
-      const gistsEl = document.querySelector("#gists");
-    
-      if (!gistsEl) return;
-    
-      gistsEl.innerHTML = `<p>${err}</p>`;
-    })
+    .catch(err => setHTML("#gists", `<p>${err}</p>`))
   ;
-  
   return `
     ${Nav()}
     <header>

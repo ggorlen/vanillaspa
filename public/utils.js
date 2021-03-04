@@ -1,10 +1,9 @@
 const setHTML = (el, html) => {
   if (typeof el === "string") {
-    el = document.
+    el = document.querySelector(el);
   }
-  el && 
+  
+  el && (el.innerHTML = html);
 };
 
-export {
-  
-};
+export {setHTML};
