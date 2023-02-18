@@ -18,6 +18,7 @@ POC vanilla SPA experiment
 - <https://stackoverflow.com/questions/26395992/single-page-application-router-without-hash-and-small>
 - <https://www.youtube.com/watch?v=6BozpmSjk-Y>
 - <https://github.com/chokcoco/ccrouter>
+- <https://stackoverflow.com/questions/75266770/how-to-open-a-new-tab-in-spa-with-vanilla-javascript>
 
 ## TODO
 - `"/gists/:username"` format support, can use <https://www.npmjs.com/package/route-parser>
