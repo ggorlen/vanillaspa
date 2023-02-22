@@ -3,20 +3,7 @@ const fs = require("fs");
 const http = require("http");
 const path = require("path");
 
-// https://stackoverflow.com/questions/3393854/get-and-set-a-single-cookie-with-node-js-http-server
-const parseCookies = request => {
-  const list = {};
-  const rc = request.headers.cookie;
-  rc && rc.split(";").forEach(cookie => {
-    const parts = cookie.split("=");
-    list[parts.shift().trim()] = decodeURI(parts.join("="));
-  });
-  return list;
-};
-
-const dataDir = `${__dirname}/.data`;
-const notesFile = `${dataDir}/notes.md`;
-const publicDir = `${__dirname}/public`;
+const publicDir = path.join(__dirname, "public");
 const staticFiles = new Set([
   "/", ...fs.readdirSync(publicDir).map(e => `/${e}`)
 ]);
@@ -34,7 +21,8 @@ const mimeTypes = {
 
 const servePublicFile = (req, res) => {
   const filePath = publicDir + req.url + 
-                   (req.url === "/" ? "index.html" : "");
+                   (req.url.endsWith("/") ? "index.html" : "");
+        console.log(filePath);
   const extname = String(path.extname(filePath)).toLowerCase();
   const contentType = mimeTypes[extname] || "application/octet-stream";
   
@@ -56,11 +44,13 @@ const servePublicFile = (req, res) => {
   });
 };
 const onRequest = (req, res) => {
+  console.log(req.url);
   if (req.method === "GET" && staticFiles.has(req.url)) {
+    console.log("K")
     return servePublicFile(req, res);
   }
 
   res.writeHead(404);
-  return res.end();  
+  return res.end();
 };
-http.createServer(onRequest).listen(process.env.PORT);
+http.createServer(onRequest).listen(process.env.PORT || 5001);
