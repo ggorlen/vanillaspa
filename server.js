@@ -2,6 +2,7 @@ const fs = require("fs");
 const http = require("http");
 const path = require("path");
 
+const routes = ["about", "gists"];
 const publicDir = path.join(__dirname, "public");
 const mimeTypes = {
   ".html": "text/html",
@@ -15,11 +16,11 @@ const mimeTypes = {
   ".ico": "image/x-icon",
 };
 
-const servePublicFile = (req, res) => {
+const servePublicFile = (reqPath, res) => {
   const filePath = path.join(
     publicDir,
-    req.url,
-    (req.url.endsWith("/") ? "index.html" : "")
+    reqPath,
+    (reqPath.endsWith("/") ? "index.html" : "")
   );
   const extname = String(path.extname(filePath)).toLowerCase();
   const contentType = mimeTypes[extname] || "application/octet-stream";
@@ -41,16 +42,16 @@ const servePublicFile = (req, res) => {
     }
   });
 };
+
 const onRequest = (req, res) => {
-  const routes = ["about", "gists"];
   const resource = req.url.replace(/^\//, "").split("/")[0];
-console.log(resource);
+
   if (req.method === "GET") {
     if (routes.includes(resource)) {
-      req.url = "/";
-      console.log("  K")
+      return servePublicFile("/", res);
     }
-    return servePublicFile(req, res);
+
+    return servePublicFile(req.url, res);
   }
 
   res.writeHead(404);
