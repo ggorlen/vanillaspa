@@ -19,6 +19,7 @@ POC vanilla SPA experiment
 - <https://www.youtube.com/watch?v=6BozpmSjk-Y>
 - <https://github.com/chokcoco/ccrouter>
 - <https://stackoverflow.com/questions/75266770/how-to-open-a-new-tab-in-spa-with-vanilla-javascript>
+- <https://hash-router.glitch.me/>
 
 ## TODO
 - `"/gists/:username"` format support, can use <https://www.npmjs.com/package/route-parser>
