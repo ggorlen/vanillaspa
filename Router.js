@@ -12,6 +12,7 @@ const Router = (() => {
   const render = path => {
     const chunks = path.split("/");
     const resource = chunks.length > 3 ? chunks.pop() : undefined;
+    const page = chunks.join("/");
     const toRender = (_routes[page] || _routes[page.replace(/\/$/, "")] || _NotFound)(resource);
     
     // A component can return either a template string or a DOM element
