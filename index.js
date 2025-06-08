@@ -6,9 +6,9 @@ import Router, {render} from "./Router.js";
 
 (() => {
   const routes = {
-    "/": Home,
-    "/about": About,
-    "/gists": Gists,
+    "/vanillaspa": Home,
+    "/vanillaspa/about": About,
+    "/vanillaspa/gists": Gists,
   };
   Router.init(document.querySelector("#app"), routes, NotFound);
   render(new URL(window.location.href).pathname);
