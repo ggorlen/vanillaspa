@@ -11,7 +11,7 @@ const Router = (() => {
   
   const render = path => {
     const chunks = path.split("/");
-    const resource = chunks.length > 2 ? chunks.pop() : undefined;
+    const resource = chunks.length > 3 ? chunks.pop() : undefined;
     const page = chunks.join("/");
     console.log(page, _routes, chunks, resource);
     const toRender = (_routes[page] || _NotFound)(resource);
