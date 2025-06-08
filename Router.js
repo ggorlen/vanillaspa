@@ -28,7 +28,7 @@ const Router = (() => {
     _rootEl.querySelectorAll('[href^="/"]').forEach(el => 
       el.addEventListener("click", evt => {
         evt.preventDefault();
-        redirect(location.pathname + new URL(evt.target.href).pathname);
+        redirect("/vanillaspa" + new URL(evt.target.href).pathname);
       })
     );
   };
