@@ -9,7 +9,7 @@ export default () => {
   searchForm.addEventListener("submit", e => {
     e.preventDefault();
     const username = e.target.elements[0].value
-    username && redirect(`/gists/${username}`);
+    username && redirect(`/vanillaspa/gists/${username}`);
   });
   return searchForm;
 };
