@@ -4,6 +4,7 @@ POC vanilla SPA experiment
 
 ## Resources
 
+- [Build a simple SPA using Node.js + Express](https://stackoverflow.com/questions/48613137/build-a-simple-spa-using-node-js-express/79875520#79875520)
 - <https://github.com/rishavs/vanillajs-spa>
 - <https://javascript.christmas/2019/12>
 - <https://dev.to/rishavs/making-a-single-page-app-in-ye-good-olde-js-es6-3eng>
