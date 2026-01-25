@@ -1,8 +1,9 @@
 # Vanilla SPA
+
 POC vanilla SPA experiment
 
 ## Resources
-- <https://glitch.com/edit/#!/vanilla-spa?path=script.js%3A24%3A12>
+
 - <https://github.com/rishavs/vanillajs-spa>
 - <https://javascript.christmas/2019/12>
 - <https://dev.to/rishavs/making-a-single-page-app-in-ye-good-olde-js-es6-3eng>
@@ -19,9 +20,9 @@ POC vanilla SPA experiment
 - <https://www.youtube.com/watch?v=6BozpmSjk-Y>
 - <https://github.com/chokcoco/ccrouter>
 - <https://stackoverflow.com/questions/75266770/how-to-open-a-new-tab-in-spa-with-vanilla-javascript>
-- <https://hash-router.glitch.me/>
 
 ## TODO
+
 - `"/gists/:username"` format support, can use <https://www.npmjs.com/package/route-parser>
 - find a better way to handle elements no longer existing and fetch calls needing abortion after a navigation occurs.
   - maybe return a promise and reject it if the page reloads.
